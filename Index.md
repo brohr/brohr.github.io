@@ -15,7 +15,6 @@ Please make use of the [Piazza](https://piazza.com/class/ij0k0xrcxrz5pa) page fo
 Final Report (70% - <font color="red">Due 3/13 11:59 PM (Hard deadline)</font>)
 
 1. [Project Description and Requirements](Project/)
-1. 'sdfdf'
 2. [Project Assignments](Project_Assignments/)
 
 
