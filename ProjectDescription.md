@@ -14,22 +14,22 @@ permalink: /Project/
 7. [Summary of Requirements](#reqs)
 
 
-For the course project, you will be studying thermo-chemical ammonia synthesis on metallic clusters and surfaces. Each student will be assigned one metal or bimetallic alloy. The due date is <font color="red">3/13 at 11:59 PM (hard deadline)</font>.
+For the course project, you will be studying thermo-chemical ammonia synthesis on metallic clusters and surfaces. Each student will be assigned one metal or bimetallic alloy. The due date is <font color="red">3/17 at 11:59 PM (hard deadline)</font>.
 
 Turn in your final report by emailing a PDF file to all TA's:
 
 ```
-ctsai89@stanford.edu, aayush@stanford.edu, shaama@stanford.edu, ambarish@stanford.edu
+brohr@stanford.edu, aayush@stanford.edu
 ```
 
 <a name='intro'></a>
 
 ## Introduction ##
 
-The thermo-chemical synthesis of ammonia is accomplished through the [Haber-Bosch process](http://en.wikipedia.org/wiki/Haber_process), where nitrogen gas reacts with hydrogen gas via:
+In the electrochemical oxygen reduction, dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
 
 $$
-\mathrm{N_2+3H_2\rightarrow 2NH_3}
+\mathrm{O_2(aq) + 2H^+_2\rightarrow 2NH_3}
 $$
 
 This process is crucial for the industrial production of fertilizers and chemical feedstocks. Typically, an iron catalyst is used to stabilize the bond-breaking of the N<sub>2</sub> species. The reaction can be separated into elementary reaction steps ([Honkala et. al. (2005)](http://dx.doi.org/10.1126/science.1106435) for more details):
