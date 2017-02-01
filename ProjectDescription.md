@@ -29,7 +29,7 @@ brohr@stanford.edu, aayush@stanford.edu
 In the electrochemical oxygen reduction, dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
 
 $$
-\mathrm{O_2(aq) + 2H^+_2\rightarrow 2NH_3}
+\mathrm{O_{2 (aq)} + 4H^+ + 4e^- \rightarrow 2H_2O}
 $$
 
 This process is crucial for the industrial production of fertilizers and chemical feedstocks. Typically, an iron catalyst is used to stabilize the bond-breaking of the N<sub>2</sub> species. The reaction can be separated into elementary reaction steps ([Honkala et. al. (2005)](http://dx.doi.org/10.1126/science.1106435) for more details):
