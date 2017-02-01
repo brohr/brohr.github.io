@@ -6,9 +6,7 @@ permalink: /
 
 This website will contain information about the course project as well as some tutorials to help you along the way.
 
-We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dtu.dk/ase/) with the [ASE interface for the Quantum ESPRESSO calculator](http://github.com/vossjo/ase-espresso). Computing resources will be provided by [Stanford Research Computing Center](https://srcc.stanford.edu/) and the [Center for Computational Earth  and Environmental Science (CEES)](http://cees.stanford.edu/index.php). The tutorials cover the basic usage of the UNIX shell, scripting in Python, and performing calculations using ASE. As part of the requirements for the final project, you will need to complete the exercises by their respective deadlines.
-
-Please make use of the [Piazza](https://piazza.com/class/ij0k0xrcxrz5pa) page for troubleshooting and for sharing results.
+We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dtu.dk/ase/) with the [ASE interface for the Quantum ESPRESSO calculator](http://github.com/vossjo/ase-espresso). Computing resources will be provided by [Stanford Research Computing Center](https://srcc.stanford.edu/). The tutorials cover the basic usage of the UNIX shell, scripting in Python, and performing calculations using ASE. As part of the requirements for the final project, you will need to complete the exercises by their respective deadlines.
 
 
 ## Final Project ##
