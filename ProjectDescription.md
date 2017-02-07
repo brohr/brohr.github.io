@@ -26,17 +26,17 @@ brohr@stanford.edu, aayush@stanford.edu
 
 ## Introduction ##
 
-In the electrochemical oxygen reduction, dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
+In the electrochemical oxygen reduction reactio (ORR), dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
 
 $$
-\mathrm{O_{2 (aq)} + 4H^+ + 4e^- \rightarrow 2H_2O}
+\mathrm{2O_{2\,(aq)} + 4H^+_{(aq)} + 4e^- \rightarrow 2H_2O}
 $$
 
-This process is crucial for the industrial production of fertilizers and chemical feedstocks. Typically, an iron catalyst is used to stabilize the bond-breaking of the N<sub>2</sub> species. The reaction can be separated into elementary reaction steps ([Honkala et. al. (2005)](http://dx.doi.org/10.1126/science.1106435) for more details):
+This is the most common cathodic reaction used in fuel cells, so making it as efficient as possible is of great interest to industry. In fact, Toyota has recently invested a great deal of money in ORR catalyst research. Making this process more efficient would make carbon-free energy storage more economically viable.
 
 $$
 \begin{align}
-\mathrm{N_{2\,(g)}} &\rightarrow \mathrm{2N*}\\
+\mathrm{O_{2\,(g)}} &\rightarrow \mathrm{OOH*}\\
 \mathrm{H_{2\,(g)}} &\rightarrow \mathrm{2H*}\\
 \mathrm{N* + H*} &\rightarrow \mathrm{NH*}\\
 \mathrm{NH* + H*} &\rightarrow \mathrm{NH_2*}\\

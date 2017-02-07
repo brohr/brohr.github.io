@@ -16,7 +16,7 @@ Final Report (70% - <font color="red">Due 3/17 11:59 PM (Hard deadline)</font>)
 2. [Project Assignments](Project_Assignments/)
 
 
-### Getting Started ###
+### Basics ###
 
 1. [Logging Into the Computing Clusters](Clusters/)
 2. [Basic UNIX](UNIX/)
