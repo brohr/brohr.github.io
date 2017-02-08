@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /Project/
+permalink: /Motivation/
 ---
 
 ## Course Project ##
@@ -36,26 +36,26 @@ This is the most common cathodic reaction used in fuel cells, so making it as ef
 
 $$
 \begin{align}
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
+\mathrm{O_{2} + H^+ + e^- + * \rightarrow OOH*}\\
+\mathrm{OOH* + H^+ + e^- \rightarrow O* + H_2O}\\
+\mathrm{O* + H^+ + e^- \rightarrow OH*}\\
+\mathrm{OH* + H^+ + e^- \rightarrow * + H_2O}\\
 \end{align}
 $$
 
 A free energy diagram is illustrated below:
 
 <center><img src="../Images/N2_path.jpg" alt="N2 path" style="width: 450px;"/>
-<br>Ammonia synthesis pathway on a Ru catalyst (<a href="http://dx.doi.org/10.1126/science.1106435">Honkala et. al. (2005)</a>)</center>
+<br>ORR Free Energy Diagram (<a href="http://dx.doi.org/10.1126/science.1106435">Honkala et. al. (2005)</a>)</center>
 
-Due to the high operating pressures and temperatures required for this reaction, alternative catalysts are still needed for this process. [Medford et. al. (2015)](http://dx.doi.org/10.1016/j.jcat.2014.12.033) have suggested that the linear scaling between the dissociation energy of N<sub>2</sub> and its transition state energy prevents most catalysts from achieving a high rate. Assuming that the bond-breaking of N<sub>2</sub> is rate limiting, then traditional metal catalysts have a transition state that is too high in energy. This is illustrated in the filled contour plot below, where the turnover frequency is plotted as a function of the transition state energy of the first N<sub>2</sub> bond breaking (*E*<sub>N-N</sub>) and the dissociation energy (∆*E*<sub>diss</sub>). A catalyst would need to behave differently from these extended surfaces in order to land in a more active region of the map. 
+There is a substantial chemical driving force to reduce oxygen to and form water. In ORR, this driving force is harnessed to do useful work - in other words, the chemical driving force works against an oxidizing potential to do work. We would like to apply the largest oxidizing potential possible, but as the oxidizing potential increases, the reduction of oxygen to water becomes less and less downhill in free energy. If the applied potential is above 0.625 V (2.5eV / 4 proton electron transfers), then ORR is uphill, and water would split into oxygen and proton electron pairs instead. Therefore, the theoretical highest voltage that can be applied is about 0.6 V. However, ORR will not procede unless each of the four elementary steps above are downhill in free energy. The theoretical best 0.6 V potential can only be realized if the delta G of each elementary step is identical. In practice, this is not the case on any known catalyst. Changing to a different catalyst will change the binding energy of each surface species (all of the intermediates). Therefore, one can change the delta G of each elementary reaction step. The trouble is, when one binding energy changes, they all change. Looking at the free energy diagram, you can see that in order to achieve the ideal scenario where each elementary step has the same delta G, we need to stabilize OOH* without stabilizing OH* or O*. The "volcano plot" below shows the maximum potential that can be applied (the limiting potential) as a function of the OOH* and OH* binding energies. You can see that all known catalysts fall on a "scaling line." There is a very goof physical reason for that, and it will be discussed in more detail in CHEMENG 242 in the spring.
+
+In this project, we will be working with reactive metals doped into graphene. The hypothesis is that if the metal atoms have a small space between them, OOH* will be able to form a favorable bond with both metal atoms, while OH, which is smaller, will not.
 
 <center><img src="../Images/N2_volcano.png" alt="N2 volcano" style="width: 400px;"/>
 <br>Filled contour plot for the turnover frequencies (Singh et. al. (2016))</center>
 
-We will be exploring 13-atom metal clusters as a system where such configurations might be found.
-
-Your goals for the project will be to: (1) explore this reaction to find unique adsorption configurations where the dissociation energy leads to a more favorable transition state energy, and (2) explore additional relations between the reaction intermediates in the pathway. You will be studying 13-atom metal clusters (M<sub>13</sub>) consisting of either pure metals or binary alloys. 
+Another way to avoid the problem is to run the reaction by a pathway that does not include OOH. If O2 adsorbs onto the surface and thermally overcomes the barrier to split into 2O*, then the rest of the ORR pathway could be run, circumventing OOH* entirely. On all known good ORR catalysts, the barrier for this process is insurmountably high. However, the barrier may be lower on the systems we'll be working with. You will analyze this pathway as well in your report.
 
 <a name='calcs'></a>
 
