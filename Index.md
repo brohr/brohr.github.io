@@ -22,7 +22,7 @@ Final Report (70% - <font color="red">Due 3/17 11:59 PM (Hard deadline)</font>)
 8. [Scripts](Scripts/)
 -->
 
-&nbsp
+'\n'
 
 ### Basics ###
 
