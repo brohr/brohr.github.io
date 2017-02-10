@@ -173,7 +173,7 @@ There are several text editors available. Popular ones include ```vim``` and ```
 <a name='submitting-jobs'></a>
 
 ## Submitting Jobs
-These instructions are specific to the **Sherlock** cluster. Instructions for the **CEES** cluster below.
+These instructions are specific to the **Sherlock** cluster.
 
 ```bash
 sbatch <script_file>
@@ -233,19 +233,3 @@ scancel <job_ID>
 Delete your job. You can get the job ID from ```squeue```
 
 ____
-
-If you are using the **CEES** cluster, the command for submitting a job is
-
-```csh
-qsub <script_file>
-```
-
-where `<script_file>` is the name of your script (e.g. `opt.py`).
-
-```bash
-qstat
-```
-
-This will display details about the job. Once the job has finished, this detail won't be available.
-
-
