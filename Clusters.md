@@ -64,9 +64,7 @@ ____
 
 For the [**Sherlock**](http://sherlock.stanford.edu) cluster, make sure to read through the login instructions [here](http://sherlock.stanford.edu/mediawiki/index.php/LogonCluster).
 
-For the [**CEES**](http://cees.stanford.edu) cluster, read through the login instructions [here](http://cees.stanford.edu/docs/GettingStarted2013.pdf).
-
-In **both** cases, login with your SUNetID and password.
+Login with your SUNetID and password.
 
 Follow the instructions below for your system:
 
@@ -86,12 +84,6 @@ ssh -K -X sunetid@sherlock.stanford.edu
 
 to log onto Sherlock, where ```sunetid``` is your Stanford SUNET ID. ```kinit``` does not need to be rerun unless the Kererbos ticket is expired. On Mac OSX you can type ```klist``` to check the status of the ticket.
 
-For **CEES**, 
-
-```bash
-ssh -X sunetid@cees-cluster.stanford.edu
-```
-
 ### Windows
 
 Open Kerberos and authenticate using your SUNetID and password. Alternatively, ppen a “Command Prompt” (open a new one, if you have just installed Kerberos) and run:
@@ -104,7 +96,7 @@ Next, launch Xming. You will always need to have this open in order to forward g
 
 Start PuTTY, and:
 
-* “Session” → “Host Name” `sunetid@sherlock.stanford.edu` for **Sherlock** or `sunetid@cees-cluster.stanford.edu` for **CEES**.
+* “Session” → “Host Name” `sunetid@sherlock.stanford.edu`.
 * “Connection” → “SSH” → “X11” check “Enable X11 forwarding”
 * Back in “Session”, you can **save these settings for next time**.
 
@@ -119,7 +111,7 @@ In a terminal (Sherlock only):
 kinit sunetid@stanford.edu
 ```
 
-Then for **Sherlock**:
+Then:
 
 ```bash
 ssh -X sunetid@sherlock.stanford.edu
@@ -128,13 +120,6 @@ ssh -X sunetid@sherlock.stanford.edu
 Open new terminals to run ssh again if you need several terminals on sherlock;
 `kinit` only needs to be run once per boot (or as long as the Kerberos ticket remains valid). Type `klist` to check the ticket's status.
 
-For **CEES**:
-
-```bash
-ssh -X sunetid@cees-cluster.stanford.edu
-```
-
-
 ____
 
 <a name='first-time'></a>
@@ -142,8 +127,6 @@ ____
 ### First Time Logging in ###
 
 <a name='first-time-sherlock'></a>
-
-**Sherlock only**:
 
 For the **first login** only, run the following command:
 
@@ -162,28 +145,6 @@ ln -s $SCRATCH scratch
 ```
 
 **Perform all your calculations from the scratch partition.**
-
-<a name='first-time-cees'></a>
-
-**CEES only**:
-
-If you access the CEES cluster from off-campus or wireless connection at Stanford Residences, you need to connect to Stanford’s VPN service before login to the cluster. The information regarding to Stanford’s VPN can be found [here](http://uit.stanford.edu/service/vpn).
-
-For the **first login** only, run the following command:
-
-```bash
-echo "setenv PATH /home/vossj/suncat/bin:${PATH}" >> ~/.tcshrc
-source ~/.tcshrc
-```
-
-Create a folder in `/data/cees/`, from where you will create additional folders for performing your calculations. Type the following to create a directory and a symbolic link from the home directory:
-
-```bash
-mkdir /data/cees/$USER
-ln -s /data/cees/$USER
-```
-
-**Make sure to perform all your work in this directory.**
 
 
 ____
