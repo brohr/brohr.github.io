@@ -6,20 +6,12 @@ permalink: /Motivation/
 
 ## Course Project ##
 1. [Introduction](#intro)
-
-<!--
-
-3. [Calculations](#calcs)
-3. [Analysis](#analysis)
-
--->
-2. [Report](#report)
-3. [Research Paper](#paper)
-
-<!--
-4. [Grading](#grading)
-5. [Summary of Requirements](#reqs)
--->
+<!-- 3. [Calculations](#calcs) -->
+<!-- 3. [Analysis](#analysis) -->
+<!-- 2. [Report](#report) -->
+2. [Research Paper](#paper)
+<!-- 4. [Grading](#grading) -->
+<!-- 5. [Summary of Requirements](#reqs) -->
 
 
 In this project we will be trying to overcome one of the fundamental challenges in two related electrochemical reactions:
@@ -228,6 +220,8 @@ We will provide more details once we get started.
 
 <a name='paper'></a>
 
+-->
+
 ## Research Paper ##
 
 We expect that your results will form the basis of a manuscript that we will be putting together as a class. For previous class papers:
@@ -235,7 +229,7 @@ We expect that your results will form the basis of a manuscript that we will be 
 * [(2011) Finite-Size Effects in O and CO Adsorption for the Late Transition Metals, *Topics in Catalysis*](http://dx.doi.org/10.1007/s11244-012-9908-x)
 * [(2015) Direct Water Decomposition on Transition Metal Surfaces: Structural Dependence and Catalytic Screening, *Catalysis Letters*](http://dx.doi.org/10.1007/s10562-016-1708-7).
  
-Notice how much the class size has grown!
+<!--
 
 <a name='grading'></a>
 
