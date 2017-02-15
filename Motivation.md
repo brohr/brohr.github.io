@@ -44,6 +44,7 @@ $$
 $$
 
 The elementary reaction steps are:
+
 $$
 \begin{align}
 \mathrm{* + H_2O\rightarrow OH* + H^+ + e^- }\\
@@ -72,6 +73,7 @@ One solution you may think of is to tune the catalyst so that the binding energi
 In this project, you will be working with systems with an unusual geometry, and you will determine whether or not your catalyst stabilize sOOH* relative to OH*.
 
 One way to avoid this problem is to use a reaction mechanism that does not involve the OOH* intermediate. This pathway is called the O-O coupling pathway. The elementary reaction steps are:
+
 $$
 \begin{align}
 \mathrm{* + H_2O\rightarrow OH* + H^+ + e^- }\\
