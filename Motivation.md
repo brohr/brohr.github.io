@@ -15,8 +15,11 @@ permalink: /Motivation/
 
 
 In this project we will be trying to overcome one of the fundamental challenges in two related electrochemical reactions:
+
 - The oxygen evolution reaction (OER), also known as "water oxidation"
+
 - The oxygen reduction reaction (ORR)
+
 The due date is <font color="red">3/17 at 11:59 PM (hard deadline)</font>.
 
 Turn in your final report by emailing a PDF file to all TA's:
