@@ -14,7 +14,10 @@ permalink: /Motivation/
 7. [Summary of Requirements](#reqs)
 
 
-For the course project, you will be studying thermo-chemical ammonia synthesis on metallic clusters and surfaces. Each student will be assigned one metal or bimetallic alloy. The due date is <font color="red">3/17 at 11:59 PM (hard deadline)</font>.
+In this project we will be trying to overcome one of the fundamental challenges in two related electrochemical reactions:
+- The oxygen evolution reaction (OER), also known as "water oxidation"
+- The oxygen reduction reaction (ORR)
+The due date is <font color="red">3/17 at 11:59 PM (hard deadline)</font>.
 
 Turn in your final report by emailing a PDF file to all TA's:
 
@@ -26,7 +29,7 @@ brohr@stanford.edu, aayush@stanford.edu
 
 ## Introduction ##
 
-In the electrochemical oxygen reduction reactio (ORR), dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
+In the electrochemical oxygen reduction reaction (ORR), dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
 
 $$
 \mathrm{2O_{2\,(aq)} + 4H^+_{(aq)} + 4e^- \rightarrow 2H_2O}
@@ -45,21 +48,15 @@ $$
 
 A free energy diagram is illustrated below:
 
-<center><img src="../Images/N2_path.jpg" alt="N2 path" style="width: 450px;"/>
-<br>ORR Free Energy Diagram (<a href="http://dx.doi.org/10.1126/science.1106435">Honkala et. al. (2005)</a>)</center>
+<center><img src="../Images/OER_FED.png" alt="OER" style="width: 450px;"/>
+<br>Nørskov, Rossmeisl, Logadottir, Lindqvist, Kitchin, Bligaard, Jonsson, J. Phys. Chem. 108, 17886 (2004)</center>
 
-There is a substantial chemical driving force to reduce oxygen to and form water. In ORR, this driving force is harnessed to do useful work - in other words, the chemical driving force works against an oxidizing potential to do work. We would like to apply the largest oxidizing potential possible, but as the oxidizing potential increases, the reduction of oxygen to water becomes less and less downhill in free energy. If the applied potential is above 0.625 V (2.5eV / 4 proton electron transfers), then ORR is uphill, and water would split into oxygen and proton electron pairs instead. Therefore, the theoretical highest voltage that can be applied is about 0.6 V. However, ORR will not procede unless each of the four elementary steps above are downhill in free energy. The theoretical best 0.6 V potential can only be realized if the delta G of each elementary step is identical. This is not the case on any known catalyst.
+There is a substantial chemical driving force to reduce oxygen to and form water. The reaction above is exergonic by 4.92 eV when no external potential is applied. In ORR, this driving force is harnessed to do useful work - in other words, the chemical driving force works against an oxidizing potential to do work. We would like to apply the largest oxidizing potential possible in order to do the most work, but as the oxidizing potential increases, the reduction of oxygen to water becomes less and less exergonic (less downhill in free energy). If the applied potential is above 1.23 V (4.92 eV / 4 proton electron transfers), then ORR is uphill, and water would split into oxygen and proton electron pairs instead. Therefore, the theoretical highest voltage that can be applied is 1.23 V. However, ORR will not procede unless each of the four elementary steps above are downhill in free energy. The theoretical best 1.23 V potential can only be realized if the delta G of each elementary step is identical. This is not the case on any known catalyst.
 
-One solution you may think of is to tune the catalyst so that the binding energies of each intermediate are such that each elementary step has the same free energy. Indeed, changing to a different catalyst will change the binding energy of a surface species (intermediate). Therefore, one can change the delta G of each elementary reaction step. The trouble is, when one binding energy changes, they all change. Looking at the free energy diagram, you can see that in order to achieve the ideal scenario where each elementary step has the same delta G, we need to stabilize OOH* without stabilizing OH* or O*. Changing to a more reactive catalyst will indeed stabilize OOH*, but it will also stabilize O* and OH*.
+One solution you may think of is to tune the catalyst so that the binding energies of each intermediate are such that each elementary step has the same free energy. Indeed, changing to a different catalyst will change the binding energy of a surface species (intermediate). Therefore, one can change the delta G of an elementary reaction step by changing catalysts. The trouble is, changing catalysts changes the binding energies of all intermediates, not just one. In other words, changing catalysts can not be used to change the delta G of one elementary reaction independent of the others. There is a very good physical reason for that, and it will be discussed in more detail in CHEMENG 242 in the spring. Looking at the free energy diagram, you can see that in order to achieve the ideal scenario where each elementary step has the same delta G, we need to stabilize OOH* without stabilizing OH* or O*. Changing to a more reactive catalyst will indeed stabilize OOH*, but it will also stabilize O* and OH*.
 
-The "volcano plot" below shows the maximum potential that can be applied (the limiting potential) as a function of the OOH* and OH* binding energies. You can see that all known catalysts fall on a "scaling line." There is a very good physical reason for that, and it will be discussed in more detail in CHEMENG 242 in the spring.
 
-<center><img src="../Images/N2_volcano.png" alt="N2 volcano" style="width: 400px;"/>
-<br>Filled contour plot for the turnover frequencies (Singh et. al. (2016))</center>
-
-In this project, we will be working with reactive metals doped into graphene. The hypothesis is that if the metal atoms have a small space between them, OOH* will be able to form a favorable bond with both metal atoms, while OH, which is smaller, will not.
-
-Another way to avoid the problem is to run the reaction by a pathway that does not include OOH. If O2 adsorbs onto the surface and thermally overcomes the barrier to split into 2O*, then the rest of the ORR pathway could be run, circumventing OOH* entirely. On all known good ORR catalysts, the barrier for this process is insurmountably high. However, the barrier may be lower on the systems we'll be working with. You will analyze this pathway as well in your report.
+Since the last two steps of the pathway are quite ideal (have approximately the same delta G), one way to avoid the OOH* problem is simply to run the reaction by a pathway that does not include OOH*. If O2 adsorbs onto the surface and thermally overcomes the barrier to split into 2O*, then the rest of the ORR pathway could be run at high efficiency, circumventing OOH* entirely. On all known good ORR catalysts, the barrier for this process is insurmountably high. However, the barrier is hypothesized to be lower on the systems we'll be working with. In this project, you will analyze this pathway.
 
 <a name='calcs'></a>
 
