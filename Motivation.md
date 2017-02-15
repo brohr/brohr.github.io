@@ -29,7 +29,53 @@ brohr@stanford.edu, aayush@stanford.edu
 
 ## Introduction ##
 
-In the electrochemical oxygen reduction reaction (ORR), dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
+In the electrochemical oxygen evolution reaction (OER), water is oxidized at the anode to form oxygen gas and proton-electron pairs (protons are released into solution and electrons are conducted away into the anode).
+
+$$
+\mathrm 2H_2O \rightarrow {2O_{2\,(aq)} + 4H^+_{(aq)} + 4e^-}
+$$
+
+The elementary reaction steps are:
+$$
+\begin{align}
+\mathrm{* + H_2O\rightarrow OH* + H^+ + e^- }\\
+\mathrm{OH* \rightarrow O* + H^+ + e^-}\\
+\mathrm{O* + H_2O \rightarrow OOH* + H^+ + e^-}\\
+\mathrm{OOH* \rightarrow O_{2} + H^+ + e^- + *}\\
+\end{align}
+$$
+
+
+A free energy diagram is illustrated below:
+
+<center><img src="../Images/OER_FED.png" alt="OER" style="width: 450px;"/>
+<br>Nørskov, Rossmeisl, Logadottir, Lindqvist, Kitchin, Bligaard, Jonsson, J. Phys. Chem. 108, 17886 (2004)</center>
+
+This is a very important reaction because it generates proton-electron pairs, which are required for any electrochemical reduction reaction (e.g. nitrogen reduction to ammonia, carbon dioxide reduction to alcholos or other fuels). OER is the most commonly used anode reaction in aqueous electrochemical cells. Therefore, it is of great interest to make this process as efficient as possible.
+
+The overall reaction is endergonic by 4.92 eV when no external potential is applied (at 0V), so an oxidizing potential of at least 1.23 V (4.92 eV / 4 proton-electron transfers) must be applied to drive the reaction forward. However, the reaction will not procede if any of the individual elementary reaction steps is uphill. The ideal scenario is to have each of the four elementary steps have an equal delta G of 1.23 eV at 0V. In this ideal scenario, the reaction could be driven forward by applying the theoretical minimum 1.23 V. However, in practice, no catalyst has this property. Instead, the third step is usually the most uphill in free energy (most endergonic). For example, if this step is uphill by 1.53 eV, then we must apply a 1.53 V potential to drive this step downhill, and the overall reaction will not occur unless a 1.53 V potential is applied. This is 0.2 V more wasteful than the ideal 1.23 V.
+
+A few definitions:
+For overall reactions that are endergonic at 0V, the voltage required to overcome the most endergonic elementary step in the pathway is called the limiting potential. In the above example, the limiting potential is 1.53 V.
+The limiting potential minus the theoretical ideal potential is called the overpotential. In this example, the overpotential is 0.3 V (1.53 V - 1.23 V). 
+
+One solution you may think of is to tune the catalyst so that the binding energies of each intermediate are such that each elementary step has the same free energy. Indeed, changing to a different catalyst will change the binding energy of a surface species (intermediate). Therefore, one can change the delta G of an elementary reaction step by changing catalysts. The trouble is, changing catalysts changes the binding energies of all intermediates, not just one. In other words, changing catalysts can not be used to change the delta G of one elementary reaction independent of the others. There is a very good physical reason for that, and it will be discussed in more detail in CHEMENG 242 in the spring. Looking at the free energy diagram, you can see that in order to achieve the ideal scenario where each elementary step has the same delta G, we need to stabilize OOH* without stabilizing OH* or O*. Changing to a more reactive catalyst will indeed stabilize OOH*, but it will also stabilize O* and OH*.
+
+In this project, you will be working with systems with an unusual geometry, and you will determine whether or not your catalyst stabilize sOOH* relative to OH*.
+
+One way to avoid this problem is to use a reaction mechanism that does not involve the OOH* intermediate. This pathway is called the O-O coupling pathway. The elementary reaction steps are:
+$$
+\begin{align}
+\mathrm{* + H_2O\rightarrow OH* + H^+ + e^- }\\
+\mathrm{OH* \rightarrow O* + H^+ + e^-}\\
+\mathrm{2O* \rightarrow O_{2} + 2*}\\
+\end{align}
+$$
+where the first and second step occur twice per overall reaction.
+
+The chief problem with this pathway is that the last step has a barrier that is insurmountably high at room temperature. In this project, you will determine whether or not your catalyst provides a sufficiently low barrier for the thrid step.
+
+The electrochemical oxygen reduction reaction (ORR) suffers from the same problem. In ORR, dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
 
 $$
 \mathrm{2O_{2\,(aq)} + 4H^+_{(aq)} + 4e^- \rightarrow 2H_2O}
@@ -46,17 +92,24 @@ $$
 \end{align}
 $$
 
-A free energy diagram is illustrated below:
+The O-O coupling pathway is:
 
-<center><img src="../Images/OER_FED.png" alt="OER" style="width: 450px;"/>
-<br>Nørskov, Rossmeisl, Logadottir, Lindqvist, Kitchin, Bligaard, Jonsson, J. Phys. Chem. 108, 17886 (2004)</center>
+$$
+\begin{align}
+\mathrm{O_{2} + 2* \rightarrow 2O*}\\
+\mathrm{O* + H^+ + e^- \rightarrow OH*}\\
+\mathrm{OH* + H^+ + e^- \rightarrow * + H_2O}\\
+\end{align}
+$$
+where the second and third step occur twice per overall reaction.
 
-There is a substantial chemical driving force to reduce oxygen to and form water. The reaction above is exergonic by 4.92 eV when no external potential is applied. In ORR, this driving force is harnessed to do useful work - in other words, the chemical driving force works against an oxidizing potential to do work. We would like to apply the largest oxidizing potential possible in order to do the most work, but as the oxidizing potential increases, the reduction of oxygen to water becomes less and less exergonic (less downhill in free energy). If the applied potential is above 1.23 V (4.92 eV / 4 proton electron transfers), then ORR is uphill, and water would split into oxygen and proton electron pairs instead. Therefore, the theoretical highest voltage that can be applied is 1.23 V. However, ORR will not procede unless each of the four elementary steps above are downhill in free energy. The theoretical best 1.23 V potential can only be realized if the delta G of each elementary step is identical. This is not the case on any known catalyst.
 
-One solution you may think of is to tune the catalyst so that the binding energies of each intermediate are such that each elementary step has the same free energy. Indeed, changing to a different catalyst will change the binding energy of a surface species (intermediate). Therefore, one can change the delta G of an elementary reaction step by changing catalysts. The trouble is, changing catalysts changes the binding energies of all intermediates, not just one. In other words, changing catalysts can not be used to change the delta G of one elementary reaction independent of the others. There is a very good physical reason for that, and it will be discussed in more detail in CHEMENG 242 in the spring. Looking at the free energy diagram, you can see that in order to achieve the ideal scenario where each elementary step has the same delta G, we need to stabilize OOH* without stabilizing OH* or O*. Changing to a more reactive catalyst will indeed stabilize OOH*, but it will also stabilize O* and OH*.
+There is a substantial chemical driving force to reduce oxygen to and form water: the reaction above is exergonic by 4.92 eV when no external potential is applied. In ORR, this driving force is harnessed to do useful work - in other words, the chemical driving force works against an oxidizing potential to do work. We would like to apply the largest oxidizing potential possible in order to do the most work, but as the oxidizing potential increases, the reduction of oxygen to water becomes less and less exergonic (less downhill in free energy). If the applied potential is above 1.23 V (4.92 eV / 4 proton electron transfers), then ORR is uphill, and OER would happen instead. Therefore, the theoretical highest voltage that can be applied is again 1.23 V. However, ORR will not procede unless each of the four elementary steps above are downhill in free energy. The theoretical best 1.23 V potential can only be realized if the delta G of each elementary step is identical. Again, this is not the case on any known catalyst.
+
+Since OER and ORR share all of the same intermediates, after calculating the binding energies of these intermediates on the catalyst that will be assigned to you, you will be able to comment on your catalyst's utility as an OER catalyst or an ORR catalyst. We hope to find that these catalysts have a lower O-O coupling barrier than normal. We may also find that this geometry stabilizes OOH* relative to OH*.
 
 
-Since the last two steps of the pathway are quite ideal (have approximately the same delta G), one way to avoid the OOH* problem is simply to run the reaction by a pathway that does not include OOH*. If O2 adsorbs onto the surface and thermally overcomes the barrier to split into 2O*, then the rest of the ORR pathway could be run at high efficiency, circumventing OOH* entirely. On all known good ORR catalysts, the barrier for this process is insurmountably high. However, the barrier is hypothesized to be lower on the systems we'll be working with. In this project, you will analyze this pathway.
+
 
 <a name='calcs'></a>
 
