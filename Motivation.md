@@ -6,12 +6,20 @@ permalink: /Motivation/
 
 ## Course Project ##
 1. [Introduction](#intro)
+
+<!--
+
 3. [Calculations](#calcs)
 3. [Analysis](#analysis)
-4. [Report](#report)
-5. [Research Paper](#paper)
-6. [Grading](#grading)
-7. [Summary of Requirements](#reqs)
+
+-->
+2. [Report](#report)
+3. [Research Paper](#paper)
+
+<!--
+4. [Grading](#grading)
+5. [Summary of Requirements](#reqs)
+-->
 
 
 In this project we will be trying to overcome one of the fundamental challenges in two related electrochemical reactions:
@@ -71,6 +79,7 @@ $$
 \mathrm{2O* \rightarrow O_{2} + 2*}\\
 \end{align}
 $$
+
 where the first and second step occur twice per overall reaction.
 
 The chief problem with this pathway is that the last step has a barrier that is insurmountably high at room temperature. In this project, you will determine whether or not your catalyst provides a sufficiently low barrier for the thrid step.
@@ -101,6 +110,7 @@ $$
 \mathrm{OH* + H^+ + e^- \rightarrow * + H_2O}\\
 \end{align}
 $$
+
 where the second and third step occur twice per overall reaction.
 
 
@@ -109,25 +119,19 @@ There is a substantial chemical driving force to reduce oxygen to and form water
 Since OER and ORR share all of the same intermediates, after calculating the binding energies of these intermediates on the catalyst that will be assigned to you, you will be able to comment on your catalyst's utility as an OER catalyst or an ORR catalyst. We hope to find that these catalysts have a lower O-O coupling barrier than normal. We may also find that this geometry stabilizes OOH* relative to OH*.
 
 
-
+<!--
 
 <a name='calcs'></a>
 
 ## Calculations ##
 
-For Sherlock, create a `CHE444Project` folder in your `$SCRATCH` directory by running:
+Create a `CHE444Project` folder in your `$SCRATCH` directory by running:
 
 ```bash
 mkdir $SCRATCH/CHE444Project/
 ```
 
-for CEES:
-
-```bash
-mkdir /data/cees/$USER/CHE444Project
-```
-
-You may run the exercises in any directory (as long as it is under `$SCRATCH` for Sherlock and `/data/cees/$USER` for CEES), but keep all the final files for the project organized.
+You may run the exercises in any directory (as long as it is under `$SCRATCH`), but keep all the final files for the project organized.
 
 For the first step, N<sub>2</sub> → 2N\*, you *are required* to calculate the transition state. To do this, you will need to calculate the final adsorbed state with two nitrogen atoms (2N\*).
 
@@ -182,6 +186,8 @@ On CEES, from your **project directory**, run:
 
 <a name='analysis'></a>
 
+
+
 ## Analysis ##
 
 Your analysis should include the following:
@@ -205,6 +211,8 @@ You are welcome to share data amongst your peers to discuss broader trends. (We 
 
 <a name='report'></a>
 
+
+
 ## Report ##
 
 Your report should be between 3 to 5 pages long including figures and tables. Please be succinct and organize it in the following way:
@@ -213,6 +221,8 @@ Your report should be between 3 to 5 pages long including figures and tables. Pl
 * Calculation details
 * Results and discussion
 * Conclusion (brief)
+
+We will provide more details once we get started.
 
 <a name='paper'></a>
 
@@ -252,3 +262,5 @@ At a minimum you should accomplish the following:
 Email your final report as a PDF document to:
 
 `ctsai89@stanford.edu, aayush@stanford.edu, shaama@stanford.edu, ambarish@stanford.edu`
+
+-->
