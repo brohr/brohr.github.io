@@ -4,15 +4,6 @@ mathjax: false
 permalink: /ASE/Getting_Started/
 ---
 
-# ASE Tutorials
-1. [Introduction to ASE](../)
-2. [Getting Started](../Getting_Started/)
-3. [Adsorption](../Adsorption/)
-4. [Transition States](../Transition_States/)
-5. [Error Estimation and Density of States](../BEEF_DOS/)
-
-____
-
 ## Getting Started ##
 
 In the first exercise, we will be looking at bulk metals and how to determine lattice constants, then we will be setting up metal surfaces and metal clusters. The example scripts use Pt by default. You should change this to the system you have been assigned for the project so you can start making progress.
