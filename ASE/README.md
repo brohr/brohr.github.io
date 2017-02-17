@@ -9,6 +9,7 @@ permalink: /ASE/
 ## Contents
 1. [Atomic Simulation Environment (ASE)](#backgroun)
 2. [Graphical User Interface (`ase-gui`)](#ase-gui)
+3. [A Typical ASE Script](#a-typical-ase-script)
 
 <a name='background'></a>
 
