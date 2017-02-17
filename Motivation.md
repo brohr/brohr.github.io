@@ -123,13 +123,17 @@ There is a substantial chemical driving force to reduce oxygen to and form water
 
 In this project, you will be working with metal organic frameworks. An example of one is shown below.
 
-<center><img src="../Images/OER_FED.png" alt="OER" style="width: 450px;"/>
+<br>
+<center><img src="/Images/MOF.png" alt="OER" style="width: 450px;"/></center>
+<br><br>
 
-Since OER and ORR share all of the same intermediates, after calculating the binding energies of these intermediates on the catalyst that will be assigned to you, you will be able to comment on your catalyst's utility as an OER catalyst or an ORR catalyst.
+In nitrogen reduction research, similar systems have shown a very low N-N transition state energy compared to the N* binding energy. We hope that, by analogy, these systems will have a low O-O transition state energy compared to the O* binding energy.
 
+<br>
+<center><img src="/Images/MOF_TS.png" alt="OER" style="width: 450px;"/></center>
+<br><br>
 
-
-We hope to find that these catalysts have a lower O-O coupling barrier for the same O* binding energy. We may also find that this catalyst active site geometry stabilizes OOH* relative to OH*.
+Since OER and ORR share all of the same intermediates, after calculating the binding energies of these intermediates on the catalyst that will be assigned to you, you will be able to comment on your catalyst's utility as an OER catalyst or an ORR catalyst. A decreased O-O coupling barrier would be very beneficial to both processes.
 
 
 <!--
