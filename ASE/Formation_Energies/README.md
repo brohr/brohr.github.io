@@ -51,7 +51,7 @@ For each metal, do the following steps:
 <br>3) Make a directory for the lattice optimization calculation for the metal.
 <br>4) Look up the <a href="http://periodictable.com/Properties/A/LatticeConstants.html">crystal structure and lattice constant(s)</a> of your material. BCC and FCC structures have only one lattice constant. HCP structures have two.
 <br>5) Copy the lattice optimization script associated with your crystal structure into the directory you created.
-<br>6) Edit the first two lines of the script - edit the name of the metal to be the name of your metal, and use the lattice constant(s) you looked up as the initial guess. You can <a href="https://brohr.github.io/UNIX/#text-editors">edit the file using the vim text editor</a>.
+<br>6) Edit the first two lines of the script - edit the name of the metal to be the name of your metal, and use the lattice constant(s) you looked up as the initial guess (in Angstrom). You can <a href="https://brohr.github.io/UNIX/#text-editors">edit the file using the vim text editor</a>.
 <br>7) Submit the lattice optimization script to the supercomputer cluster by running
 
 ```bash
