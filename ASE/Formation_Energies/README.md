@@ -20,7 +20,7 @@ In this exercise, you will be running all of the calculations necessary to calcu
 
 The formation energy is very simply the reaction energy of the following reaction:
 
-$$\mathrm{"Empty Organic Framework" + "Bulk Metal" \rightarrow "Metal Organic Framework"}$$
+Empty Organic Framework + Bulk Metal $$\mathrm{\rightarrow}$$ Metal Organic Framework
 
 So, you will calculate all three of those energies this week using density functional theory (DFT).
 
