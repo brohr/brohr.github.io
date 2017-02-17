@@ -4,10 +4,6 @@ mathjax: false
 permalink: /ASE/Formation_Energies/
 ---
 
-## Getting Started ##
-
-In the first exercise, we will be looking at bulk metals and how to determine lattice constants, then we will be setting up metal surfaces and metal clusters. The example scripts use Pt by default. You should change this to the system you have been assigned for the project so you can start making progress.
-
 ## Contents ##
 
 1. [Introduction](#intro)
