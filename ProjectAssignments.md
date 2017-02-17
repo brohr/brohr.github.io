@@ -4,8 +4,6 @@ mathjax: false
 permalink: /Project_Assignments/
 ---
 
-## Catalyst Assignments
-
 
 <style>
 table {
