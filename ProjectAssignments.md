@@ -4,9 +4,9 @@ mathjax: false
 permalink: /Project_Assignments/
 ---
 
-## Computing Cluster and Catalyst Assignment
+## Catalyst Assignments
 
-Half of the class will be using the CEES cluster and the other half will be using the Sherlock cluster. Please confirm your assignments below:
+
 <style>
 table {
     width:100%;
