@@ -26,7 +26,7 @@ In this exercise, you will be running all of the calculations necessary to calcu
 
 The formation energy is very simply the reaction energy of the following reaction:
 
-\mathrm{Empty Organic Framework + Bulk Metal \rightarrow Metal Organic Framework }
+$$\mathrm{Empty Organic Framework + Bulk Metal \rightarrow Metal Organic Framework }$$
 
 So, you will calculate all three of those energies this week using density functional theory (DFT).
 
@@ -306,12 +306,12 @@ In case you didn't specify a long enough wall-time, the calculation can be conti
 
 ### Analysis ###
 
-When the lattice optimization calculation is finished, the energy of the system is the last number in the first column of `lattice_opt.log`. You can view that energy by navigating to the directory that the calculation was run in and typing `cat lattice_opt.log` The energy per atom of the bulk metal (\mathrm{E_{Bulk Metal}}) is simply this total energy divided by the number of atoms in the unit cell.
+When the lattice optimization calculation is finished, the energy of the system is the last number in the first column of `lattice_opt.log`. You can view that energy by navigating to the directory that the calculation was run in and typing `cat lattice_opt.log` The energy per atom of the bulk metal ($$\mathrm{E_{Bulk Metal}}$$) is simply this total energy divided by the number of atoms in the unit cell.
 
 When the optimization calculations are finished, the energy of each system will be stored in a file called `out.energy` in the directory that the calculation was run in. You can view that energy by navigating to the directory that the calculation was run in and typing `cat out.energy` 
 
 The formation energy is given by:
 
-\mathrm{E_{MOF} - E{Empty Framework} - N*E_{Bulk Metal}}
+$$\mathrm{E_{MOF} - E{Empty Framework} - N*E_{Bulk Metal}}$$
 
 where N is the number of metal atoms in the MOF.
