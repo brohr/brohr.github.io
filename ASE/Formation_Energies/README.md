@@ -6,12 +6,11 @@ permalink: /ASE/Formation_Energies/
 
 ## Contents ##
 
-1. [Introduction](#intro)
-2. [A Typical ASE Script](#a-typical-ase-script)
-3. [Lattice Constant Determination and Bulk Energy Calculation](#lattice-constant-determination)
-4. MOF Energy Calculation
-<br>4a. [One Metal](#MOF1)
-<br>4b. [Two Metals](#MOF2)
+1. [A Typical ASE Script](#a-typical-ase-script)
+2. [Lattice Constant Determination and Bulk Energy Calculation](#lattice-constant-determination)
+3. MOF Energy Calculation
+<br>3a. [One Metal](#MOF1)
+<br>3b. [Two Metals](#MOF2)
 4. [Restarting Calculations](#restarting)
 5. [Analysis](#analysis)
 
@@ -23,7 +22,7 @@ In this exercise, you will be running all of the calculations necessary to calcu
 
 The formation energy is very simply the reaction energy of the following reaction:
 
-$$\mathrm{Empty_Organic_Framework + Bulk_Metal \rightarrow Metal_Organic_Framework }$$
+$$\mathrm{"Empty Organic Framework" + "Bulk Metal" \rightarrow "Metal Organic Framework"}$$
 
 So, you will calculate all three of those energies this week using density functional theory (DFT).
 
