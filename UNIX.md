@@ -169,6 +169,10 @@ Any number of characters. Example: ```ls *.traj``` will list all ```.traj``` fil
 ## Text Editors
 There are several text editors available. Popular ones include ```vim``` and ```nano```. Most people at SUNCAT use ```vim```. To open a file, use ```vim file.txt``` to open a file named ```file.txt```.
 
+To edit in vim, type `i` to get into "insert mode." In insert mode, you can type normally and navigate through the document with the arrow keys.
+
+To save, type `esc` then `:w`. To save and quit vim, type `esc` then `:wq`. To quit vim without saving changes, type `esc` then `:q!`. 
+
 
 <a name='submitting-jobs'></a>
 

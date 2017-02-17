@@ -10,7 +10,7 @@ We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dt
 
 
 ## Final Project ##
-Final Report (70% - <font color="red">Due 3/17 11:59 PM (Hard deadline)</font>)
+Final Report (60% - <font color="red">Due 3/17 11:59 PM (Hard deadline)</font>)
 
 1. [Introduction and Motivation](Motivation/)
 2. [Project Assignments](Project_Assignments/)

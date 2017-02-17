@@ -10,14 +10,25 @@ In the first exercise, we will be looking at bulk metals and how to determine la
 
 ## Contents ##
 
-1. [A Typical ASE Script](#a-typical-ase-script)
-2. [Bulk metal](#bulk)
-  1. [Lattice Constant Determination](#lattice-constant-determination)
-  2. [Convergence with k-Points](#convergence-with-k-points)
-3. [Setting up Surfaces](#surfaces)
-4. [Setting up Clusters](#clusters)
+1. [A Typical ASE Script](#intro)
+2. [A Typical ASE Script](#a-typical-ase-script)
+3. [Lattice Constant Determination](#lattice-constant-determination)
+4a. [Setting Up MOF (One Metal)](#MOF1)
+4b. [Setting Up MOF (Two Metals)](#MOF2)
 5. [Restarting Calculations](#restarting)
-6. [Next Steps](#next)
+6. [Analysis](#analysis)
+
+<a name='intro'></a>
+
+### Introduction ###
+
+In this exercise, you will be running all of the calculations necessary to calculate the formation energies of the metal organic frameworks we'll be working with for this project.
+
+The formation energy is very simply the reaction energy of the following reaction:
+
+\mathrm{Empty Organic Framework + Bulk Metal \rightarrow Metal Organic Framework }
+
+So, you will calculate all three of those energies this week using density functional theory (DFT).
 
 ### Required Files ###
 
@@ -27,19 +38,10 @@ on Sherlock:
 
 ```bash
 cd $SCRATCH
-wget http://chemeng444.github.io/ASE/Getting_Started/exercise_1_sherlock.tar
-tar -xvf exercise_1_sherlock.tar
+cp -r /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies .
 ```
 
-or on CEES:
-
-```bash
-cd ~/$USER
-wget http://chemeng444.github.io/ASE/Getting_Started/exercise_1_cees.tar
-tar -xvf exercise_1_cees.tar
-```
-
-This should create a folder called `Exercise_1_Getting_Started/` containing subfolders with all the starter scripts you will need. By default, The output for your calculations will be written into the folder from where you submitted the script. To perform new calculations, you will generally be copying the scripts from these tutorials into new folders, modifying them, and submitting them.
+This should create a folder called `Exercise_1_Formation_Energies/` containing subfolders with all the starter scripts you will need. By default, The output for your calculations will be written into the folder from where you submitted the script. To perform new calculations, you will generally be copying the scripts from these tutorials into new folders, modifying them, and submitting them.
 
 <a name='a-typical-ase-script'></a>
 
@@ -50,7 +52,7 @@ ASE scripts can be run directly in the terminal (in the login node) or submittin
 Let's look at how a typical ASE script is written. Open the [`run_surf.py`](run_surf.py) script in the `Surface` folder. We will be showing the Sherlock versions of the script for brevity, but the CEES versions are analogous.
 
 ```bash
-vi run_surf.py
+vi opt.py
 ```
 
 The first line,
@@ -65,48 +67,41 @@ Next, notice the comments in the beginning. These lines will be ignored by Pytho
 
 ```python
 #above line selects special python interpreter needed to run espresso
-#SBATCH -p iric 
+#SBATCH -p iric
+#################
 #set a job name
+#you can also use --job-name=$PWD when submitting
 #SBATCH --job-name=myjob
-
+#################
 #a file for job output, you can check job progress
 #SBATCH --output=myjob.out
-
+#################
 # a file for errors from the job
 #SBATCH --error=myjob.err
-
-#time you think you need. The max is 2880:00
-#SBATCH --time=100:00
-
+#################
+#time you think you need; default is 20 hours
+#SBATCH --time=48:00:00
+#################
 #number of nodes you are requesting
 #SBATCH --nodes=1
-
+#################
 #SBATCH --mem-per-cpu=4000
-
+#################
 #get emailed about job BEGIN, END, and FAIL
 #SBATCH --mail-type=ALL
-
+#################
 #who to send email to; please change to your email
-#SBATCH  --mail-user=SUNETID@stanford.edu
-
+#SBATCH  --mail-user=YOUR_SUNETID@stanford.edu
+#################
 #task to run per node; each node has 16 cores
 #SBATCH --ntasks-per-node=16
 ```
 
-To change the allocated time for the jobs, modify:
-
-Sherlock (MM:SS):
+To change the allocated time for the jobs, modify (MM:SS):
 
 ```python
 #SBATCH --time=1200:00
 ```
-
-CEES (HH:MM:SS):
-
-```python
-#PBS -l walltime=20:00:00
-```
-
 
 Next, we import all the relevant ASE modules in for this calculation
 
@@ -120,10 +115,17 @@ from espresso import espresso
 
 The asterisks `*` indicates that all methods and classes should be imported. You can also specify the ones you need. `from ase import *` imports all the basic functionality in ase, `from ase.lattice.surface import *` import methods and classes related to solid surfaces, `from ase.optimize import *` imports the optimization methods, `from ase.constraints import *` imports the constraint methods, and most importantly `from espresso import espresso` import the Quantum ESPRESSO calculator for the ASE interface.
 
-We define a string
+We read in a .traj file, which specifies the location of the nuclei and unit cell boundaries.
 
 ```python
-name = 'Pt111'
+try:
+    atoms = read('qn.traj')
+except:
+    try:
+        atoms = read('qn.traj.bak')
+  os.system('cp qn.traj.bak qn.traj')
+    except:
+        atoms = read('init.traj')
 ```
 which we can easily modify and use for naming output files.
 
@@ -139,39 +141,41 @@ Then, the Quantum ESPRESSO calculator is set up. All parameters related to the e
 
 ```python
 #espresso calculator setup
-calc = espresso(pw=500,           #plane-wave cutoff
-                dw=5000,          #density cutoff
-                xc='BEEF-vdW',    #exchange-correlation functional
-                kpts=(4,4,1),     #k-point sampling, no dispersion to be sampled along z
-                nbands=-10,       #10 extra bands besides the bands needed to hold the valence electrons
+calc = espresso(pw=600,             #plane-wave cutoff
+                dw=6000,        #density cutoff
+                xc='BEEF',    #exchange-correlation functional
+                kpts=(6,6,1),       #k-point sampling;
+                nbands=-60,         #20 extra bands besides the bands needed to hold
+                          #the valence electrons
+                smearing='gaussian',
                 sigma=0.1,
-                convergence= {'energy':1e-5,  #convergence parameters
-                              'mixing':0.1,
-                              'nmix':10,
-                              'mix':4,
-                              'maxsteps':500,
-                              'diag':'david'
-                             },
-                outdir='calcdir') #output directory for Quantum Espresso files
+                convergence= {'energy':1e-5,
+                         'mixing':0.1,
+                         'nmix':10,
+                         'mix':4,
+                         'maxsteps':500,
+                         'diag':'david',
+                                   'mixing_mode':'local-TF'
+                          },  #convergence parameters
+                dipole={'status':True}, #dipole correction to account for periodicity in z
+                spinpol=False,
+                outdir='calcdir',
+                output = {'removesave':True},
+                psppath = '/scratch/users/aayush/psp/gbrv/')  #new vanderbilt psp's
 ```
 
-Then, atomic constraints are set. Since there are only a finite number of layers in the slab, the lowest layers are fixed to emulate the bulk. 
+
+Finally, the Quantum ESPRESSO calculator is attached to the `slab` Atoms object, and the optimizer is defined.
 
 ```python
-mask = [atom.z < 10 for atom in slab]  #atoms in the structure to be fixed
-fixatoms = FixAtoms(mask=mask)
-slab.set_constraint(fixatoms)           #fix everything but the top layer atoms
-slab.rattle()                           #define random displacements to the atomic positions before optimization
+atoms.set_calculator(calc)
 ```
-
-Finally, the Quantum ESPRESSO calculator is attached to the `slab` Atoms object, and the optimizer is defined. 
 
 To perform structural optimizations, an optimizer needs to be defined. We will be using the BFGS Line Search, which is implemented in `QuasiNewton`. For more details about optimizations in ASE, look at [this page](https://wiki.fysik.dtu.dk/ase/ase/optimize.html). `QuasiNewton()` is an object for the [structural optimization](https://wiki.fysik.dtu.dk/ase/ase/optimize.html), which takes an Atoms object as an input. A convergence criteria is set and `qn.run()` initiates the optimization.
 
 ```python
-slab.set_calculator(calc)                       #connect espresso to slab
-qn = QuasiNewton(slab, trajectory=name+'.traj', logfile=name+'.log') #relax slab
-qn.run(fmax=0.05)                               #until max force<=0.05 eV/AA
+qn = QuasiNewton(atoms, trajectory='qn.traj', logfile='qn.log')
+qn.run(fmax=0.05)                              #until max force<=0.05 eV/AA
 ```
 
 The `logfile=` argument is optional. If it's not specified, then the output will be written to the system output, e.g. `myjob.out`. If it is specified, then the output for the optimization will be written to `name+'.log'`, e.g. `Pt111.log`. You should see the following results:
@@ -192,7 +196,13 @@ The column names for the results are:
 optimizer         step    time       total energy (eV)   forces (eV/Å)
 ```
 
-The trajectory for all optimization steps are stored in `name+'.traj'`, so if `name='output'`, then it will be stored in `output.traj`. You can read the output trajectory using `ase-gui output.traj` and view all steps. The final energy is also stored in the `.traj` file and can be retrieved by reading in the `.traj` file. Using Python in interactive mode (i.e., by running `python`):
+The final energy output is also stored in a file called `out.energy`. You can see its contents by typing the bash command:
+
+```bash
+cat out.energy
+```
+
+The trajectory for all optimization steps are stored in `'qn.traj'`. You can read the output trajectory using `ase-gui qn.traj` and view all steps. The final energy is also stored in the `.traj` file and can be retrieved by reading in the `.traj` file. Using Python in interactive mode (i.e., by running `python`):
 
 ```python
 >>> from ase.io import read
@@ -202,336 +212,87 @@ The trajectory for all optimization steps are stored in `name+'.traj'`, so if `n
 ```
 
 
-<a name='bulk'></a>
-
-### Bulk Metal ###
-
-Head into the `Exercise_1_Getting_Started/Bulk/` folder.
-
-As a first example, we will be setting up a bulk fcc metal. You will typically do this when working with an entirely new system. 
-
 <a name='lattice-constant-determination'></a>
 
-#### Lattice Constant Determination ####
+#### Lattice Constant Determination and Bulk Metal Energies ####
 
-Find the [`bulk_metal.py`](bulk_metal.py) script in the `lattice` folder. This script determines the optimum lattice parameter for bulk fcc Pt using the equation of state model. **Change Pt into the metal you have been assigned for the project** and also look up a reasonable initial guess for the lattice parameter, then replace `a = `. There's actually a table of calculated lattice parameters below, but one would typically start out with an experimentally measured value as a starting guess. For alloys, an A<sub>3</sub>B alloy will be generated. **Note:** we are only considering A<sub>3</sub>B alloys because there is a lot of published DFT data associated with them. This will make it easier for your analysis. Your cluster will just be A<sub>7</sub>B<sub>6</sub>, roughly half of each metal.
+Some of you are assigned one metal, and others are assigned two metals.
+For each metal, do the following steps:
 
-Submit the script by running (for Sherlock)
+1) You will need to use some basic UNIX commands for this. You can use <a href="https://brohr.github.io/UNIX/">our notes</a> as a reference or find other resources online if you prefer.
+2) Go to the `Exercise_1_Formation_Energies/Bulk/` folder.
+3) Make a directory for the lattice optimization calculation for the metal.
+4) Look up the <a href="http://periodictable.com/Properties/A/LatticeConstants.html">crystal structure and lattice constant(s)</a> of your material. BCC and FCC structures have only one lattice constant. HCP structures have two.
+5) Copy the lattice optimization script associated with your crystal structure into the directory you created.
+6) Edit the first two lines of the script - edit the name of the metal to be the name of your metal, and use the lattice constant(s) you looked up as the initial guess. You can <a href="https://brohr.github.io/UNIX/#text-editors">edit the file using the vim text editor</a>.
+7) Submit the lattice optimization script to the supercomputer cluster by running
 
 ```bash
 sbatch --job-name=$PWD bulk_metal.py
 ```
 Here, `--job-name=$PWD` sets the current working directory as the job name.
 
-and for CEES:
-
-```bash
-qsub bulk_metal.py
-```
-
-This plots the energy as a function of lattice parameter and determine the lattice parameter corresponding to the minimum energy.
-
-To view the equation of state plot:
-
-```bash
-display Cu3Re-eos.png
-```
-
-for example, where `Cu3Re` would be replaced by the metal you are assigned.
-
-You should see a plot that looks like this:
-
-<center><img src="Images/Cu3Re-eos.png" alt="Cu3Re" style="width: 450px;"/>
-<br>Equation of state plot for a Cu<sub>3</sub>Re bulk fcc alloy</center>
-
-with the following output in a `myjob.out` file:
-
-```
-Lattice constant: 3.72570317144 AA
-Bulk modulus: 204.462225193 GPa
-(Fitted) total energy at equilibrium latt. const.: -19142.1406997 eV
-```
+If you need to cancel a job, see the instructions <a href="https://brohr.github.io/UNIX/#submitting-jobs">here</a>.
 
 
-**<font color="red">Requirement:</font>** Turn in a plot for the equation of state that is generated by running the script.
 
-**Check to make sure your lattice parameters match the ones below:**
+<a name='MOF1'></a>
 
-<style>
-table {
-    width:100%;
-}
-table, th, td {
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: center;
-}
-th {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
-tr.last
-{
-    border-bottom: 1px solid #ddd;
-}
-table#t01 tr:nth-child(even) {
-    background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
-   background-color:#fff;
-}
-table#t01 th    {
-    background-color: black;
-    color: white;
-}
-</style>
-<center>Lattice Parameters for Pure Metals (fcc unless otherwise stated)</center>
-<center>
-<table>
-<tr><th>Metal</th>
-<th>Lattice Constant (Å)</th></tr>
-<tr><td>Ag</td>
-<td>4.214</td></tr>
-<tr><td>Au</td>
-<td>4.225</td></tr>
-<tr><td>Cu</td>
-<td>3.685</td></tr>
-<tr><td>Pt</td>
-<td>4.015</td></tr>
-<tr><td>Pd</td>
-<td>3.987</td></tr>
-<tr><td>Ir</td>
-<td>3.892</td></tr>
-<tr><td>Ru</td>
-<td>3.863</td></tr>
-<tr><td>Re</td>
-<td>3.889</td></tr>
-<tr><td>Rh</td>
-<td>3.863</td></tr>
-<tr class="last"><td>Mo (bcc)</td>
-<td>3.174</td></tr>
-</table>
+### Metal Organic Framework (One Metal) ###
+
+Go to the `Exercise_1_Formation_Energies/MOF/` folder.
+You will be calculating the energy for:
+1) The empty organic framework
+2) The organic framework with one metal atom in the ring
+3) The organic framework with two metal atoms in the ring
+4) The organic framework with three metal atom  in the ring
+
+For each calculation:
+1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
+2) Copy `opt.py` into the directory
+3) Copy `empty_organic_framework.traj` into the directory.
+4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
+5) Rename the .traj file `init.traj`.
+6) Submit `opt.py` to the supercomputer cluster.
+
+Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
+For the others, your init.traj files should look something like this (but with your metal):
+
+<center><img src="/Images/1-atom.png"/>
+<br>
+<br><img src="/Images/2-atom.png"/>
+<br>
+<br><img src="/Images/3-atom.png"/>
 </center>
 
+<a name='MOF2'></a>
 
-<style>
-table {
-    width:50%;
-}
-</style>
-<center>Lattice Parameters for A<sub>3</sub>B Alloy Metals (all fcc)
+### Metal Organic Framework (Two Metals) ###
+
+Go to the `Exercise_1_Formation_Energies/MOF/` folder.
+You will be calculating the energy for:
+1) The empty organic framework
+2) The organic framework with two metal atoms in the ring
+3) The organic framework with three (metal A, metal A, metal B) metal atoms in the ring
+4) The organic framework with three (metal A, metal B, metal B) metal atom  in the ring
+
+For each calculation:
+1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
+2) Copy `opt.py` into the directory
+3) Copy `empty_organic_framework.traj` into the directory.
+4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
+5) Rename the .traj file `init.traj`.
+6) Submit `opt.py` to the supercomputer cluster.
+
+Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
+For the others, your init.traj files should look something like this (but with your metal):
+
+<center><img src="/Images/AB.png"/>
+<br>
+<br><img src="/Images/AAB.png"/>
+<br>
+<br><img src="/Images/ABB.png"/>
 </center>
-<center>
-<table>
-<tr><th>Alloy</th>
-<th>Lattice Constant (Å)</th>
-<th>Alloy</th>
-<th>Lattice Constant (Å)</th>
-</tr>
-<tr>
-<td>AgPd</td>
-<td>4.137</td>
-<td>AgPt</td>
-<td>4.125</td>
-</tr>
-<tr>
-<td>AgIr</td>
-<td>4.096</td>
-<td>AgRu</td>
-<td>4.106</td>
-</tr>
-<tr>
-<td>AgRe</td>
-<td>4.107</td>
-<td>AgRh</td>
-<td>4.109</td>
-</tr>
-<tr>
-<td>AgMo</td>
-<td>4.165</td>
-<td>AuPd</td>
-<td>4.124</td>
-</tr>
-<tr>
-<td>AuPt</td>
-<td>4.122</td>
-<td>AuIr</td>
-<td>4.095</td>
-</tr>
-<tr>
-<td>AuRu</td>
-<td>4.094</td>
-<td>AuRe</td>
-<td>4.104</td>
-</tr>
-<tr>
-<td>AuRh</td>
-<td>4.097</td>
-<td>AuMo</td>
-<td>4.146</td>
-</tr>
-<tr>
-<td>CuPd</td>
-<td>3.748</td>
-<td>CuPt</td>
-<td>3.747</td>
-</tr>
-<tr>
-<td>CuIr</td>
-<td>3.719</td>
-<td>CuRu</td>
-<td>3.713</td>
-</tr>
-<tr>
-<td>CuRe</td>
-<td>3.726</td>
-<td>CuRh</td>
-<td>3.719</td>
-</tr>
-<tr>
-<td>CuMo</td>
-<td>3.772</td>
-<td>PdPt</td>
-<td>3.974</td>
-</tr>
-<tr>
-<td>PdIr</td>
-<td>3.944</td>
-<td>PdRu</td>
-<td>3.935</td>
-</tr>
-<tr>
-<td>PdRe</td>
-<td>3.937</td>
-<td>PdRh</td>
-<td>3.949</td>
-</tr>
-<tr>
-<td>PdMo</td>
-<td>3.963</td>
-<td>PtIr</td>
-<td>3.950</td>
-</tr>
-<tr>
-<td>PtRu</td>
-<td>3.937</td>
-<td>PtRe</td>
-<td>3.947</td>
-</tr>
-<tr>
-<td>PtRh</td>
-<td>3.946</td>
-<td>PtMo</td>
-<td>3.968</td>
-</tr>
-<tr class="last">
-<td>IrRu</td>
-<td>3.860</td>
-<td>IrRe</td>
-<td>3.8750</td>
-</tr>
-</table>
-</center>
-
-<a name='convergence-with-k-points'></a>
-
-#### Convergence with k-Points ####
-Next, we will determine how well-converged the energy is with respect to the number of k-points in each direction. Submit the [`run_sp.py`](run_sp.py) script in the kpts folder using the lattice parameter obtained from the previous section.
-
-Sherlock:
-
-```bash
-sbatch --job-name=$PWD run_sp.py
-```
-
-CEES:
-
-```bash
-qsub run_sp.py
-```
-
-**Requirement**: Try using k = 6, 10, 14, and 18 in all three directions (i.e., k×k×k). and plot the energy as a function of k-points. Pick one and try to justify why it would be a reasonable choice. Use the optimal k-point sampling to re-run the lattice optimization script (`bulk_metal.py`) again and check if the results are consistent. The relevant k-points will usually be known, since we have consistent settings that we use throughout the group. In principle, one should always check for convergence when working with a new system.
-
-<a name='surfaces'></a>
-
-### Metal Surfaces ###
-
-Head into the `Exercise_1_Getting_Started/Surface/` folder.
-
-Next we will set up various common surface terminations of a metal using the `ase.lattice.surface` module and optimize the geometry. We will focus on the 111 surface for fcc metals (110 for bcc). The [`setup_surf.py`](setup_surf.py) file sets up the (111) surface for Pt, with specification of the size and lattice parameter. **Edit the file and replace Pt with your metal and the lattice constant with your optimized result from running **`bulk_metal.py`. You can execute this directly from the terminal and view the results, e.g.:
-
-```bash
-$ python setup_surf.py
-$ ase-gui slab.traj
-```
-
-This will generate slab.traj and the second command opens the file with the ASE gui visualizer. You should see something looking like this:
-
-<center><img src="Images/Pt-slab.png" alt="Pt111" style="width: 250px;"/>
-<img src="Images/Mo-slab.png" alt="Mo110" style="width: 250px;"/>
-<br>Pt(111) and Mo(110) slabs</center>
-
-[`run_surf.py`](run_surf.py) is a script that sets up the Quantum ESPRESSO calculator and performs the geometry optimization with respect to energy. This must be submitted to an external queue and should not be run directly in the login node. Make sure that you have run `setup_surf.py` to generate your `slab.traj` file, then submit the optimization script using:
-
-```bash
-sbatch --job-name=$PWD run_surf.py
-```
-
-in Sherlock, where again `--job-name=$PWD` will use the present working directory for the the SLURM (the job submission system) job name. Or,
-
-```bash
-qsub run_surf.py
-```
-
-in CEES.
-
-Try changing the number of k-points in the x and y-direction (i.e., k×k×1) using k = 4, 6, and 8. There are 7 Å of vacuum in the z-direction so 1 k-point is sufficient.
-
-**<font color="red">Requirement:</font>** Plot the change in the total slab energy as a function of the different k-points (kxkx1 where k = {4, 6, 8}). Do this by changing the keyword in the `run_surf.py` script, e.g. `kpts=(2,2,1)`. How many k-points are sufficient?
-
-<a name='clusters'></a>
-
-### Metal Clusters ###
-
-Head into the `Exercise_1_Getting_Started/Cluster/` folder.
-
-Next we will use the `ase.cluster.octahedron` module to set up metal clusters. This will create M<sub>13</sub> clusters with 4 fold and 3 fold coordination. The [`setup_cluster.py`](setup_cluster.py) script demonstrates how to set up the 13 atom metallic cluster. **Change Pt into the metal or alloy you have been assigned**. This can be run within the login node using
-
-```bash
-$ python setup_cluster.py
-$ ase-gui cluster.traj
-```
-
-<center><img src="Images/Au-cluster.png" alt="Au cluster" style="width: 300px;"/>
-<br>Au<sub>13</sub> cluster</center>
-
-Next the [`run_cluster.py`](run_cluster.py) script will perform the optimization. **Note that you will probably need to allocate 10-20 hours for this calculation to finish.** Don't be alarmed if it is taking longer than all the other calculations. If you didn't allocate enough time, you can always [restart the calculation](#restarting) from where you left off. 
-
-Read through the script and when you have made the required modifications, submit the job using Sherlock
-
-```bash
-sbatch --job-name=$PWD run_cluster.py
-```
-
-or for CEES
-
-```bash
-qsub run_cluster.py
-```
-
-You are able to name the output inside the script using the `name` variable. The optimized structure will be written out as `name.traj`.
-
-**<font color="red">Requirement:</font>** Plot the change in the total slab energy as a function of different k-points: 1x1x1 (`'gamma'`), 2x2x2, 4x4x4. By default the 'gamma' keyword can be used when only 1 k-point is needed. Otherwise, specify all three k-points in the script (i.e., `kpts=(2,2,2)`). Use the `run_cluster.py` script. To save time, **use the optimized results** from your initial calculation with `gamma` as the input for the k = 2, 4 calculations. See [Restarting Calculations](#restarting).
-
-*Update (2015/02/15):* If you are working with an alloy, it is possible that you will see large structural rearrangements when you are optimizing. You are only required to use the result you get from the `gamma` for the project, but you may wish to explore other possible geometries for the cluster that might be lower in energy. In the `setup_cluster.py` script, simply uncomment the line
-
-```python
-#atoms = Icosahedron(element1, noshells=2)
-```
-
-to setup an icosahedron cluster. This geometry has at most three-fold coordination for adsorbates instead of four-fold in the cuboctahedral geometry.
 
 
 
@@ -539,34 +300,18 @@ to setup an icosahedron cluster. This geometry has at most three-fold coordinati
 
 ### Restarting Calculations ###
 
-In case you didn't specify a long enough wall-time, the calculation can be continued by using your current output. Simply use the `ase-gui` command, which has a command-line feature for combining trajectory files.
+In case you didn't specify a long enough wall-time, the calculation can be continued by using your current output. Simply submit the script again, and it will pick up where it left off.
 
-```bash
-ase-gui input.traj output.traj -o input.traj
-```
+<a name='analysis'></a>
 
-this command combines `input.traj` and `output.traj` and writes it out to `input.traj`. This way, the `input.traj` will now include all trajectory images. You can then re-run the script without changing the filename to be read in.
+### Analysis ###
 
+When the lattice optimization calculation is finished, the energy of the system is the last number in the first column of `lattice_opt.log`. You can view that energy by navigating to the directory that the calculation was run in and typing `cat lattice_opt.log` The energy per atom of the bulk metal (\mathrm{E_{Bulk Metal}}) is simply this total energy divided by the number of atoms in the unit cell.
 
+When the optimization calculations are finished, the energy of each system will be stored in a file called `out.energy` in the directory that the calculation was run in. You can view that energy by navigating to the directory that the calculation was run in and typing `cat out.energy` 
 
-<a name='next'></a>
+The formation energy is given by:
 
-### Next Steps ###
+\mathrm{E_{MOF} - E{Empty Framework} - N*E_{Bulk Metal}}
 
-**<font color="red">Requirement:</font>** Before we begin calculating adsorption energies, it is important to adopt a consistent set of calculation settings for the whole class. This is so that the results are calculated at the same level of accuracy and can be properly compared. 
-
-After you have finished the exercises above, make sure you have calculated your (111) (or (110) if you were assigned Mo) surface at these settings:
-
-* (2×2×4) unit cell
-* 4 layers, top 2 layers relaxed, bottom 2 layers fixed
-* 4×4×1 Monkhorst-Pack k-point set
-* 7 Å vacuum in the z-direction (both directions)
-
-And for your M<sub>13</sub>  cluster:
-
-* All atoms relaxed
-* `'gamma'` point for k-point sampling
-* 7 Å vacuum in all directions
-
-
-**Next**: move on to [Adsorption](../Adsorption/) to learn about how to calculate adsorbates on your surface.
+where N is the number of metal atoms in the MOF.
