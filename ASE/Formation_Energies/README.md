@@ -45,13 +45,13 @@ This should create a folder called `Exercise_1_Formation_Energies/` containing s
 
 ASE scripts can be run directly in the terminal (in the login node) or submitting to external nodes. Generally, you will be submitting jobs to external nodes and only small scripts will be run on the login node. By default, all output from any submitted script will be written *from the directory where the submission command was executed*, so make sure you are inside the calculation folder before running the submission command.
 
-Let's look at how a typical ASE script is written. Open the [`run_surf.py`](run_surf.py) script in the `Surface` folder. We will be showing the Sherlock versions of the script for brevity, but the CEES versions are analogous.
+You can see the script by typing the following command
 
 ```bash
 vi opt.py
 ```
 
-The first line,
+Let's walk through the script. The first line,
 
 ```python
 #!/usr/bin/env /home/vossj/suncat/bin/python
@@ -122,16 +122,9 @@ except:
   os.system('cp qn.traj.bak qn.traj')
     except:
         atoms = read('init.traj')
+        atoms.rattle(stdev=0.01)
 ```
 which we can easily modify and use for naming output files.
-
-An existing trajectory can be read in:
-
-```python
-# read in the slab
-slab = io.read('slab.traj')
-```
-
 
 Then, the Quantum ESPRESSO calculator is set up. All parameters related to the electronic structure calculation are included here. The following example shows typical parameters that we use in the group for metal calculations. Typically, the number of k-points is determined using 24 Å per lattice vector for transition metals.
 

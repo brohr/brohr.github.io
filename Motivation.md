@@ -32,7 +32,7 @@ brohr@stanford.edu, aayush@stanford.edu
 
 ## Introduction ##
 
-# OER #
+## OER ##
 
 In the electrochemical oxygen evolution reaction (OER), water is oxidized at the anode to form oxygen gas and proton-electron pairs (protons are released into solution and electrons are conducted away into the anode).
 
@@ -85,7 +85,7 @@ where the first and second step occur twice per overall reaction.
 
 The chief problem with this pathway is that the last step has a barrier that is insurmountably high at room temperature. In this project, you will determine whether or not your catalyst provides a sufficiently low barrier for the thrid step.
 
-# ORR #
+## ORR ##
 
 The electrochemical oxygen reduction reaction (ORR) suffers from the same problem. In ORR, dissolved oxygen reacts at the cathode with protons from the electrolyte solution and electrons from the cathode via:
 
@@ -119,9 +119,17 @@ where the second and third step occur twice per overall reaction.
 
 There is a substantial chemical driving force to reduce oxygen to and form water: the reaction above is exergonic by 4.92 eV when no external potential is applied. In ORR, this driving force is harnessed to do useful work - in other words, the chemical driving force works against an oxidizing potential to do work. We would like to apply the largest oxidizing potential possible in order to do the most work, but as the oxidizing potential increases, the reduction of oxygen to water becomes less and less exergonic (less downhill in free energy). If the applied potential is above 1.23 V (4.92 eV / 4 proton electron transfers), then ORR is uphill, and OER would happen instead. Therefore, the theoretical highest voltage that can be applied is again 1.23 V. However, ORR will not procede unless each of the four elementary steps above are downhill in free energy. The theoretical best 1.23 V potential can only be realized if the delta G of each elementary step is identical. Again, this is not the case on any known catalyst.
 
-# Your Project #
+## Your Project ##
 
-Since OER and ORR share all of the same intermediates, after calculating the binding energies of these intermediates on the catalyst that will be assigned to you, you will be able to comment on your catalyst's utility as an OER catalyst or an ORR catalyst. We hope to find that these catalysts have a lower O-O coupling barrier for the same O* binding energy. We may also find that this catalyst active site geometry stabilizes OOH* relative to OH*.
+In this project, you will be working with metal organic frameworks. An example of one is shown below.
+
+<center><img src="../Images/OER_FED.png" alt="OER" style="width: 450px;"/>
+
+Since OER and ORR share all of the same intermediates, after calculating the binding energies of these intermediates on the catalyst that will be assigned to you, you will be able to comment on your catalyst's utility as an OER catalyst or an ORR catalyst.
+
+
+
+We hope to find that these catalysts have a lower O-O coupling barrier for the same O* binding energy. We may also find that this catalyst active site geometry stabilizes OOH* relative to OH*.
 
 
 <!--
