@@ -312,6 +312,6 @@ When the optimization calculations are finished, the energy of each system will 
 
 The formation energy is given by:
 
-$$\mathrm{E_{MOF} - E{Empty Framework} - N*E_{Bulk Metal}}$$
+$$\mathrm{E_{MOF} - E_{Empty Framework} - N*E_{Bulk Metal}}$$
 
 where N is the number of metal atoms in the MOF.
