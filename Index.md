@@ -16,9 +16,9 @@ Final Report (60% - <font color="red">Due 3/17 11:59 PM (Hard deadline)</font>)
 2. [Project Assignments](Project_Assignments/)
 3. [Introduction to ASE](ASE/)
 4. [Project Part 1 - Formation Energies](ASE/Formation_Energies/)
-5. [Project Part 2 - Adsorption Energies](ASE/Getting_Started/)
-6. [Project Part 3 - Barriers](ASE/Getting_Started/)
-7. [Error Estimation and Density of States (Optional)](ASE/BEEF_DOS/)
+<!-- 5. [Project Part 2 - Adsorption Energies](ASE/Getting_Started/) -->
+<!-- 6. [Project Part 3 - Barriers](ASE/Getting_Started/) -->
+<!-- 7. [Error Estimation and Density of States (Optional)](ASE/BEEF_DOS/) -->
 8. [Scripts](Scripts/)
 
 ### Basics ###
