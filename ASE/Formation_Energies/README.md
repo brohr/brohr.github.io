@@ -72,7 +72,7 @@ You will be calculating the energy for:
 <br>1) The empty organic framework
 <br>2) The organic framework with one metal atom in the ring
 <br>3) The organic framework with two metal atoms in the ring
-<br>4) The organic framework with three metal atom  in the ring
+<br>4) The organic framework with three metal atoms  in the ring
 
 For each calculation:
 <br>1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
@@ -101,7 +101,7 @@ You will be calculating the energy for:
 <br>1) The empty organic framework
 <br>2) The organic framework with two metal atoms in the ring
 <br>3) The organic framework with three (metal A, metal A, metal B) metal atoms in the ring
-<br>4) The organic framework with three (metal A, metal B, metal B) metal atom  in the ring
+<br>4) The organic framework with three (metal A, metal B, metal B) metal atoms  in the ring
 
 For each calculation:
 <br>1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
