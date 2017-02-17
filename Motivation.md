@@ -57,17 +57,19 @@ A free energy diagram is illustrated below:
 <center><img src="../Images/OER_FED.png" alt="OER" style="width: 450px;"/>
 <br>Nørskov, Rossmeisl, Logadottir, Lindqvist, Kitchin, Bligaard, Jonsson, J. Phys. Chem. 108, 17886 (2004)</center>
 
-This is a very important reaction because it generates proton-electron pairs, which are required for any electrochemical reduction reaction (e.g. nitrogen reduction to ammonia, carbon dioxide reduction to alcholos or other fuels). OER is the most commonly used anode reaction in aqueous electrochemical cells. Therefore, it is of great interest to make this process as efficient as possible.
+This is a very important reaction because it generates proton-electron pairs, which are required for any electrochemical reduction reaction (e.g. nitrogen reduction to ammonia, carbon dioxide reduction to alcohols or other fuels). OER is the most commonly used anode reaction in aqueous electrochemical cells. Therefore, it is of great interest to make this process as efficient as possible.
 
 The overall reaction is endergonic by 4.92 eV when no external potential is applied (at 0V), so an oxidizing potential of at least 1.23 V (4.92 eV / 4 proton-electron transfers) must be applied to drive the reaction forward. However, the reaction will not procede if any of the individual elementary reaction steps is uphill. The ideal scenario is to have each of the four elementary steps have an equal delta G of 1.23 eV at 0V. In this ideal scenario, the reaction could be driven forward by applying the theoretical minimum 1.23 V. However, in practice, no catalyst has this property. Instead, the third step is usually the most uphill in free energy (most endergonic). For example, if this step is uphill by 1.53 eV, then we must apply a 1.53 V potential to drive this step downhill, and the overall reaction will not occur unless a 1.53 V potential is applied. This is 0.2 V more wasteful than the ideal 1.23 V.
 
 A few definitions:
 For overall reactions that are endergonic at 0V, the voltage required to overcome the most endergonic elementary step in the pathway is called the limiting potential. In the above example, the limiting potential is 1.53 V.
-The limiting potential minus the theoretical ideal potential is called the overpotential. In this example, the overpotential is 0.3 V (1.53 V - 1.23 V). 
+The limiting potential minus the theoretical ideal potential is called the overpotential. In this example, the overpotential is 0.3 V (1.53 V - 1.23 V).
+
+[Here](/LimitingPotentialToyExample.xlsx) is a toy example that may help you to understand the concepts.
 
 One solution you may think of is to tune the catalyst so that the binding energies of each intermediate are such that each elementary step has the same free energy. Indeed, changing to a different catalyst will change the binding energy of a surface species (intermediate). Therefore, one can change the delta G of an elementary reaction step by changing catalysts. The trouble is, changing catalysts changes the binding energies of all intermediates, not just one. In other words, changing catalysts can not be used to change the delta G of one elementary reaction independent of the others. There is a very good physical reason for that, and it will be discussed in more detail in CHEMENG 242 in the spring. Looking at the free energy diagram, you can see that in order to achieve the ideal scenario where each elementary step has the same delta G, we need to stabilize OOH* without stabilizing OH* or O*. Changing to a more reactive catalyst will indeed stabilize OOH*, but it will also stabilize O* and OH*.
 
-In this project, you will be working with systems with an unusual geometry, and you will determine whether or not your catalyst stabilize sOOH* relative to OH*.
+In this project, you will be working with systems with an unusual geometry, and you will determine whether or not your catalyst stabilizes OOH* relative to OH*.
 
 One way to avoid this problem is to use a reaction mechanism that does not involve the OOH* intermediate. This pathway is called the O-O coupling pathway. The elementary reaction steps are:
 

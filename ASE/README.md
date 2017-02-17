@@ -4,15 +4,6 @@ mathjax: true
 permalink: /ASE/
 ---
 
-# ASE Tutorials
-1. [Introduction to ASE](../ASE/)
-2. [Getting Started](Getting_Started/)
-3. [Adsorption](Adsorption/)
-4. [Transition States](Transition_States/)
-5. [Error Estimation and Density of States](BEEF_DOS/)
-
-____
-
 ## Introduction to ASE
 
 ## Contents
@@ -76,7 +67,7 @@ After selecting OK, the atom will be placed on top of the atom you selected. If 
 Moving an atom
 </center>
 
-For the extended surfaces (e.g., 111) you can repeat the slab. This is convenient for identifying symmetric sites, which might not be obvious at first glance from the unit cell. To do this:
+For the extended surfaces you can repeat the unit cell. This is convenient for identifying symmetric sites, which might not be obvious at first glance from the unit cell. To do this:
 
 <center><img src="Images/gui-repeating.png" alt="add" style="width: 400px;"/><br>
 Repeating a slab
