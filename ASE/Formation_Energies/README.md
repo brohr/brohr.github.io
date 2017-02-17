@@ -13,8 +13,8 @@ In the first exercise, we will be looking at bulk metals and how to determine la
 1. [Introduction](#intro)
 2. [A Typical ASE Script](#a-typical-ase-script)
 3. [Lattice Constant Determination](#lattice-constant-determination)
-4a. [Setting Up MOF (One Metal)](#MOF1)
-4b. [Setting Up MOF (Two Metals)](#MOF2)
+<br>4a. [Setting Up MOF (One Metal)](#MOF1)
+<br>4b. [Setting Up MOF (Two Metals)](#MOF2)
 5. [Restarting Calculations](#restarting)
 6. [Analysis](#analysis)
 
