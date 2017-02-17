@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: false 
-permalink: /ASE/Getting_Started/
+permalink: /ASE/Formation_Energies/
 ---
 
 ## Getting Started ##
