@@ -219,13 +219,13 @@ The trajectory for all optimization steps are stored in `'qn.traj'`. You can rea
 Some of you are assigned one metal, and others are assigned two metals.
 For each metal, do the following steps:
 
-1) You will need to use some basic UNIX commands for this. You can use <a href="https://brohr.github.io/UNIX/">our notes</a> as a reference or find other resources online if you prefer.
-2) Go to the `Exercise_1_Formation_Energies/Bulk/` folder.
-3) Make a directory for the lattice optimization calculation for the metal.
-4) Look up the <a href="http://periodictable.com/Properties/A/LatticeConstants.html">crystal structure and lattice constant(s)</a> of your material. BCC and FCC structures have only one lattice constant. HCP structures have two.
-5) Copy the lattice optimization script associated with your crystal structure into the directory you created.
-6) Edit the first two lines of the script - edit the name of the metal to be the name of your metal, and use the lattice constant(s) you looked up as the initial guess. You can <a href="https://brohr.github.io/UNIX/#text-editors">edit the file using the vim text editor</a>.
-7) Submit the lattice optimization script to the supercomputer cluster by running
+<br>1) You will need to use some basic UNIX commands for this. You can use <a href="https://brohr.github.io/UNIX/">our notes</a> as a reference or find other resources online if you prefer.
+<br>2) Go to the `Exercise_1_Formation_Energies/Bulk/` folder.
+<br>3) Make a directory for the lattice optimization calculation for the metal.
+<br>4) Look up the <a href="http://periodictable.com/Properties/A/LatticeConstants.html">crystal structure and lattice constant(s)</a> of your material. BCC and FCC structures have only one lattice constant. HCP structures have two.
+<br>5) Copy the lattice optimization script associated with your crystal structure into the directory you created.
+<br>6) Edit the first two lines of the script - edit the name of the metal to be the name of your metal, and use the lattice constant(s) you looked up as the initial guess. You can <a href="https://brohr.github.io/UNIX/#text-editors">edit the file using the vim text editor</a>.
+<br>7) Submit the lattice optimization script to the supercomputer cluster by running
 
 ```bash
 sbatch --job-name=$PWD bulk_metal.py
@@ -242,18 +242,18 @@ If you need to cancel a job, see the instructions <a href="https://brohr.github.
 
 Go to the `Exercise_1_Formation_Energies/MOF/` folder.
 You will be calculating the energy for:
-1) The empty organic framework
-2) The organic framework with one metal atom in the ring
-3) The organic framework with two metal atoms in the ring
-4) The organic framework with three metal atom  in the ring
+<br>1) The empty organic framework
+<br>2) The organic framework with one metal atom in the ring
+<br>3) The organic framework with two metal atoms in the ring
+<br>4) The organic framework with three metal atom  in the ring
 
 For each calculation:
-1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
-2) Copy `opt.py` into the directory
-3) Copy `empty_organic_framework.traj` into the directory.
-4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
-5) Rename the .traj file `init.traj`.
-6) Submit `opt.py` to the supercomputer cluster.
+<br>1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
+<br>2) Copy `opt.py` into the directory
+<br>3) Copy `empty_organic_framework.traj` into the directory.
+<br>4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
+<br>5) Rename the .traj file `init.traj`.
+<br>6) Submit `opt.py` to the supercomputer cluster.
 
 Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
 For the others, your init.traj files should look something like this (but with your metal):
@@ -271,18 +271,18 @@ For the others, your init.traj files should look something like this (but with y
 
 Go to the `Exercise_1_Formation_Energies/MOF/` folder.
 You will be calculating the energy for:
-1) The empty organic framework
-2) The organic framework with two metal atoms in the ring
-3) The organic framework with three (metal A, metal A, metal B) metal atoms in the ring
-4) The organic framework with three (metal A, metal B, metal B) metal atom  in the ring
+<br>1) The empty organic framework
+<br>2) The organic framework with two metal atoms in the ring
+<br>3) The organic framework with three (metal A, metal A, metal B) metal atoms in the ring
+<br>4) The organic framework with three (metal A, metal B, metal B) metal atom  in the ring
 
 For each calculation:
-1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
-2) Copy `opt.py` into the directory
-3) Copy `empty_organic_framework.traj` into the directory.
-4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
-5) Rename the .traj file `init.traj`.
-6) Submit `opt.py` to the supercomputer cluster.
+<br>1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
+<br>2) Copy `opt.py` into the directory
+<br>3) Copy `empty_organic_framework.traj` into the directory.
+<br>4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
+<br>5) Rename the .traj file `init.traj`.
+<br>6) Submit `opt.py` to the supercomputer cluster.
 
 Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
 For the others, your init.traj files should look something like this (but with your metal):
