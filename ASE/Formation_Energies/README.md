@@ -10,7 +10,7 @@ In the first exercise, we will be looking at bulk metals and how to determine la
 
 ## Contents ##
 
-1. [A Typical ASE Script](#intro)
+1. [Introduction](#intro)
 2. [A Typical ASE Script](#a-typical-ase-script)
 3. [Lattice Constant Determination](#lattice-constant-determination)
 4a. [Setting Up MOF (One Metal)](#MOF1)
@@ -258,11 +258,11 @@ For each calculation:
 Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
 For the others, your init.traj files should look something like this (but with your metal):
 
-<center><img src="/Images/1-atom.png"/>
+<center><img src="/ASE/Formation_Energies/Images/1-atom.png"/>
 <br>
-<br><img src="/Images/2-atom.png"/>
+<br><img src="/ASE/Formation_Energies/Images/2-atom.png"/>
 <br>
-<br><img src="/Images/3-atom.png"/>
+<br><img src="/ASE/Formation_Energies/Images/3-atom.png"/>
 </center>
 
 <a name='MOF2'></a>
@@ -287,11 +287,11 @@ For each calculation:
 Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
 For the others, your init.traj files should look something like this (but with your metal):
 
-<center><img src="/Images/AB.png"/>
+<center><img src="/ASE/Formation_Energies/Images/AB.png"/>
 <br>
-<br><img src="/Images/AAB.png"/>
+<br><img src="/ASE/Formation_Energies/Images/AAB.png"/>
 <br>
-<br><img src="/Images/ABB.png"/>
+<br><img src="/ASE/Formation_Energies/Images/ABB.png"/>
 </center>
 
 
