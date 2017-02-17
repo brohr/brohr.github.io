@@ -10,7 +10,6 @@ permalink: /ASE/Formation_Energies/
 2. MOF Energy Calculation
 <br>2a. [One Metal](#MOF1)
 <br>2b. [Two Metals](#MOF2)
-3. [Restarting Calculations](#restarting)
 4. [Analysis](#analysis)
 
 <a name='intro'></a>
@@ -122,11 +121,6 @@ For the others, your init.traj files should look something like this (but with y
 <br><img src="/ASE/Formation_Energies/Images/ABB.png"/>
 </center>
 
-
-
-<a name='restarting'></a>
-
-### Restarting Calculations ###
 
 In case you didn't specify a long enough wall-time, the calculation can be continued by using your current output. Simply submit the script again, and it will pick up where it left off.
 
