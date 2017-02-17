@@ -56,7 +56,7 @@ For each metal, do the following steps:
 <br>7) Submit the lattice optimization script to the supercomputer cluster by running
 
 ```bash
-sbatch --job-name=$PWD bulk_metal.py
+sbatch --job-name=$PWD lattice_opt_CRYSTALSTRUCTURE.py
 ```
 Here, `--job-name=$PWD` sets the current working directory as the job name.
 
