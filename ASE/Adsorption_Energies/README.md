@@ -65,45 +65,60 @@ If you need to cancel a job, see the instructions <a href="https://brohr.github.
 
 <a name='MOF1'></a>
 
-### Clean Metal-Doped Graphene Catalyst (One Metal) ###
+### Metal Organic Framework (One Metal) ###
 
-We have calculated the energy for:
-<br>1) The intact graphene lattice
-<br>2) The graphene lattice with the metal atoms in vacancies that are close together
-<br>3) The graphene lattice with the metal atoms in vacancies that are far apart
-<br>4) The graphene lattice with only one metal atom in the unit cell
+Go to the `Exercise_1_Formation_Energies/MOF/` folder.
+You will be calculating the energy for:
+<br>1) The empty organic framework
+<br>2) The organic framework with one metal atom in the ring
+<br>3) The organic framework with two metal atoms in the ring
+<br>4) The organic framework with three metal atoms  in the ring
 
-The DFT calculations on the clean catalysts are done for you. To find the resulting energies:
-<br>1) Type `cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations`
-<br>2) As usual, type `ls` or `ll` to see what is in the folder
-<br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
-<br>4) Type `cat out.energy` to see the energy calculated by DFT
+For each calculation:
+<br>1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
+<br>2) Copy `opt.py` into the directory
+<br>3) Copy `empty_organic_framework.traj` into the directory.
+<br>4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
+<br>5) Rename the .traj file `init.traj`.
+<br>6) Submit `opt.py` to the supercomputer cluster.
 
-<center><img src="/ASE/Formation_Energies/Images/close.png"/>
+Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
+For the others, your init.traj files should look something like this (but with your metal):
+
+<center><img src="/ASE/Formation_Energies/Images/1-atom.png"/>
 <br>
-<br><img src="/ASE/Formation_Energies/Images/far.png"/>
+<br><img src="/ASE/Formation_Energies/Images/2-atom.png"/>
 <br>
-<br><img src="/ASE/Formation_Energies/Images/monomer.png"/>
+<br><img src="/ASE/Formation_Energies/Images/3-atom.png"/>
 </center>
 
 <a name='MOF2'></a>
 
-### Clean Metal-Doped Graphene Catalyst (Two Metals) ###
+### Metal Organic Framework (Two Metals) ###
 
-We have calculated the energy for:
-<br>1) The intact graphene lattice
-<br>2) The graphene lattice with the metal atoms in vacancies that are close together
-<br>3) The graphene lattice with the metal atoms in vacancies that are far apart
+Go to the `Exercise_1_Formation_Energies/MOF/` folder.
+You will be calculating the energy for:
+<br>1) The empty organic framework
+<br>2) The organic framework with two metal atoms in the ring
+<br>3) The organic framework with three (metal A, metal A, metal B) metal atoms in the ring
+<br>4) The organic framework with three (metal A, metal B, metal B) metal atoms  in the ring
 
-The DFT calculations on the clean catalysts are done for you. To find the resulting energies:
-<br>1) Type `cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations`
-<br>2) As usual, type `ls` or `ll` to see what is in the folder
-<br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
-<br>4) Type `cat out.energy` to see the energy calculated by DFT
+For each calculation:
+<br>1) Make a new directory for the calculation. Things get very confusing at best and impossible to detangle at worst if multiple calculations are run in the same directory.
+<br>2) Copy `opt.py` into the directory
+<br>3) Copy `empty_organic_framework.traj` into the directory.
+<br>4) Go into the directory, and use the `ase-gui` to edit the .traj file. Press `ctrl + S` to save your edits to the .traj file.
+<br>5) Rename the .traj file `init.traj`.
+<br>6) Submit `opt.py` to the supercomputer cluster.
 
-<center><img src="/ASE/Formation_Energies/Images/close2.png"/>
+Note: for the empty organic framework, you don't need to edit the .traj file at all (skip steps 4-5).
+For the others, your init.traj files should look something like this (but with your metal):
+
+<center><img src="/ASE/Formation_Energies/Images/AB.png"/>
 <br>
-<br><img src="/ASE/Formation_Energies/Images/far2.png"/>
+<br><img src="/ASE/Formation_Energies/Images/AAB.png"/>
+<br>
+<br><img src="/ASE/Formation_Energies/Images/ABB.png"/>
 </center>
 
 
@@ -119,6 +134,6 @@ When the optimization calculations are finished, the energy of each system will 
 
 The formation energy is given by:
 
-$$\mathrm{E_{metal-doped-graphene} - C*E_{intact-graphene-per-carbon} - N*E_{Bulk Metal}}$$
+$$\mathrm{E_{MOF} - E_{Empty Framework} - N*E_{Bulk Metal}}$$
 
-where N is the number of metal atoms in the metal-doped-graphene unit cell and "C" is the number of carbon atoms in the metal-doped-graphene unit cell.
+where N is the number of metal atoms in the MOF.

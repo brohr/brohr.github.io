@@ -36,10 +36,10 @@ This is the most common cathodic reaction used in fuel cells, so making it as ef
 
 $$
 \begin{align}
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
-\mathrm{O_{2} + H^+ + e^- \rightarrow OOH*}\\
+\mathrm{O_{2} + H^+ + e^- + * \rightarrow OOH*}\\
+\mathrm{OOH* + H^+ + e^- \rightarrow O* + H_2O}\\
+\mathrm{O* + H^+ + e^- \rightarrow OH*}\\
+\mathrm{OH* + H^+ + e^- \rightarrow * + H_2O}\\
 \end{align}
 $$
 
