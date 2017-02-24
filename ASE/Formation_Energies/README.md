@@ -95,7 +95,7 @@ We have calculated the energy for:
 <br>2) The graphene lattice with the metal atoms in vacancies that are close together
 <br>3) The graphene lattice with the metal atoms in vacancies that are far apart
 
-The DFT calculations on the clean catalysts are done for you. To find the resulting energies:
+The DFT calculations on the clean catalysts are done for you. To find the resulting energies..:
 <br>1) Type `cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations`
 <br>2) As usual, type `ls` or `ll` to see what is in the folder
 <br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
@@ -107,7 +107,6 @@ The DFT calculations on the clean catalysts are done for you. To find the result
 </center>
 
 
-In case you didn't specify a long enough wall-time, the calculation can be continued by using your current output. Simply submit the script again, and it will pick up where it left off.
 
 <a name='analysis'></a>
 
@@ -121,4 +120,4 @@ The formation energy is given by:
 
 $$\mathrm{E_{metal-doped-graphene} - C*E_{intact-graphene-per-carbon} - N*E_{Bulk Metal}}$$
 
-where N is the number of metal atoms in the metal-doped-graphene unit cell and "C" is the number of carbon atoms in the metal-doped-graphene unit cell.
+where N is the number of metal atoms in the metal-doped-graphene unit cell and "C" is the number of carbon atoms in the metal-doped-graphene unit cell. The formation energies may be uphill. This system would be difficult to synthesize, but this is a good way to study similar-looking active sites in real materials without wasting the computational power on modeling the real systems.
