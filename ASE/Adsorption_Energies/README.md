@@ -77,7 +77,7 @@ Below are images showing what initial guesses for OOH_OH and OOH-bidentate shoul
 Go to the `Exercise_2_Adsorption_Energies/` folder. You can ignore the 1-metal folder. Simply go into the 2-metal folder `cd 2-metal`.
 For each configuration (close and far), you will be determining the energy of each intermediate and each combination of intermediates on your catalyst.
 
-Start by going into either the `close` folder or the `far` folder. Within those folders, there is already an empty folder created for each calculation you will need to do. `OH_O` is meant to describe an OH on your first metal atom and an O on your second metal atom. Since you have two metal atoms of different types, `OH_O` is different than `O_OH`.
+Start by going into the `close`. Within that folder, there is already an empty folder created for each calculation you will need to do. `OH_O` is meant to describe an OH on your first metal atom and an O on your second metal atom. Since you have two metal atoms of different types, `OH_O` is different than `O_OH`.
 
 For each calculation:
 <br>1) Go into the folder for your calculation
@@ -95,7 +95,7 @@ If you type `ls` or `ll`, you should see 2 files: `init.traj` and `opt.py`.
 <br>6) Submit `opt.py` to the supercomputer cluster with `sbatch --job-name=$(pwd) opt.py`.
 
 
-Repeat the above procedure for the folders within the `Exercise_2_Adsorption_Energies/2-metal/close` and `Exercise_2_Adsorption_Energies/2-metal/far` folders.
+Repeat the above procedure for the folders within the `Exercise_2_Adsorption_Energies/2-metal/far` folder.
 
 Below are images showing what initial guesses for OOH_OH and OOH-bidentate should look like. Unlike the images below, you will, of course, have two metal atoms of different types.
 
@@ -119,9 +119,9 @@ When the optimization calculations are finished, the energy of each system will 
 
 The electronic reference energy for O and H are given by:
 
-$$\mathrm{E_{O,reference} - E_{H_2O} - E_{H_2}}$$
+$$\mathrm{E_{O,reference} = E_{H_2O} - E_{H_2}}$$
 
-$$\mathrm{E_{H,reference} - E_{H_2}/2}$$
+$$\mathrm{E_{H,reference} = E_{H_2}/2}$$
 
 The adsorption energy is given by:
 
