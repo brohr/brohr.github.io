@@ -107,7 +107,7 @@ Below are images showing what initial guesses for OOH_OH and OOH-bidentate shoul
 
 <a name='gasphase'></a>
 
-#### Gas Phase Calculations ####
+### Gas Phase Calculations ###
 
 The gas phase calculations are done for you. The results are in the `Exercise_2_Adsorption_Energies/gas-phase` folder. The electronic energy is stored in the file called `e_energy.out`.
 
