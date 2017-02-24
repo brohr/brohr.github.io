@@ -49,7 +49,7 @@ cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .
 <br>3) Copy your clean (meaning empty, no adsorbate bonded) catalyst from the execise 1 folder into the current folder with a command that looks like this:
 ```bash
 cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj
-```.
+```
 If you type `ls` or `ll`, you should see 2 files: `init.traj` and `opt.py`. 
 <br>4) Use the ASE gui (`ase-gui init.traj`) to add the adsorbate to the catalyst. The adsorbate you add should, of course, correspond to the name of the folder you are working in
 <br>6) Submit `opt.py` to the supercomputer cluster with `sbatch --job-name=$(pwd) opt.py`.
@@ -89,7 +89,7 @@ cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .
 <br>3) Copy your clean (meaning empty, no adsorbate bonded) catalyst from the execise 1 folder into the current folder with a command that looks like this:
 ```bash
 cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj
-```.
+```
 If you type `ls` or `ll`, you should see 2 files: `init.traj` and `opt.py`. 
 <br>4) Use the ASE gui (`ase-gui init.traj`) to add the adsorbate to the catalyst. The adsorbate you add should, of course, correspond to the name of the folder you are working in
 <br>6) Submit `opt.py` to the supercomputer cluster with `sbatch --job-name=$(pwd) opt.py`.
