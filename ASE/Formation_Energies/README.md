@@ -10,7 +10,7 @@ permalink: /ASE/Formation_Energies/
 2. MOF Energy Calculation
 <br>2a. [One Metal](#MOF1)
 <br>2b. [Two Metals](#MOF2)
-4. [Analysis](#analysis)
+3. [Analysis](#analysis)
 
 <a name='intro'></a>
 
