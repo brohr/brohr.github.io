@@ -16,13 +16,13 @@ permalink: /ASE/Formation_Energies/
 
 ### Introduction ###
 
-In this exercise, you will be running all of the calculations necessary to calculate the formation energies of the metal organic frameworks we'll be working with for this project.
+In this exercise, you will be running all of the calculations necessary to calculate the formation energies of the metal-doped graphene systems we'll be working with for this project.
 
 The formation energy is very simply the reaction energy of the following reaction:
 
-<center>Empty Organic Framework + Bulk Metal $$\mathrm{\rightarrow}$$ Metal Organic Framework</center>
+<center>Graphene Sheet + Bulk Metal $$\mathrm{\rightarrow}$$ Metal Doped Graphene</center>
 
-So, you will calculate all three of those energies this week using density functional theory (DFT).
+We calculated all three of those energies this week using density functional theory (DFT).
 
 ### Required Files ###
 
