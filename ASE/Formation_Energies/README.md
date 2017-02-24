@@ -76,7 +76,7 @@ We have calculated the energy for:
 The DFT calculations on the clean catalysts are done for you. To find the resulting energies:
 <br>1) Type
 ```bash
-cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations
+cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene
 ```
 <br>2) As usual, type `ls` or `ll` to see what is in the folder
 <br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
@@ -101,7 +101,7 @@ We have calculated the energy for:
 The DFT calculations on the clean catalysts are done for you. To find the resulting energies..:
 <br>1) Type 
 ```bash
-cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations
+cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene
 ```
 <br>2) As usual, type `ls` or `ll` to see what is in the folder
 <br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
