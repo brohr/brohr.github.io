@@ -7,8 +7,8 @@ permalink: /ASE/Adsorption_Energies/
 ## Contents ##
 
 1. Adsorbate Energy Calculations
-<br>1a. [One Metal](#MOF1)
-<br>1b. [Two Metals](#MOF2)
+<br>1a. [One Metal](#M1)
+<br>1b. [Two Metals](#M2)
 2. [Gas Phase Calculations](#gasphase)
 2. [Analysis](#analysis)
 
@@ -31,7 +31,7 @@ cp -r /scratch/users/brohr/TA_CHE444/Exercise_2_Adorption_Energies .
 
 This should create a folder called `Exercise_2_Adsoprtion_Energies/` containing subfolders with all the starter scripts you will need. 
 
-<a name='MOF1'></a>
+<a name='M1'></a>
 
 ### Adsorbate Energy Calculations (One Metal) ###
 
@@ -70,7 +70,7 @@ Below are images showing what initial guesses for OOH_OH and OOH-bidentate shoul
 <br><img src="/ASE/Adsorption_Energies/Images/OOH-bidentate.png"/>
 </center>
 
-<a name='MOF2'></a>
+<a name='M2'></a>
 
 ### Adsorbate Energy Calculations (Two Metals) ###
 
