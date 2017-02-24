@@ -43,9 +43,9 @@ Start by going to the monomer folder. There is already an empty folder created f
 For each calculation:
 <br>1) Go into the folder for your calculation
 <br>2) Copy the opimization script into the folder:
-`cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .`
+```cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .```
 <br>3) Copy your clean (meaning empty, no adsorbate bonded) catalyst from the execise 1 folder into the current folder with a command that looks like this:
-`cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj`.
+```cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj```.
 If you type `ls` or `ll`, you should see 2 files: `init.traj` and `opt.py`. 
 <br>4) Use the ASE gui (`ase-gui init.traj`) to add the adsorbate to the catalyst. The adsorbate you add should, of course, correspond to the name of the folder you are working in
 <br>6) Submit `opt.py` to the supercomputer cluster with `sbatch --job-name=$(pwd) opt.py`.
@@ -78,10 +78,10 @@ Start by going into either the `close` folder or the `far` folder. Within those 
 For each calculation:
 <br>1) Go into the folder for your calculation
 <br>2) Copy the opimization script into that folder:
-`cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .`
+```cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .```
 
 <br>3) Copy your clean (meaning empty, no adsorbate bonded) catalyst from the execise 1 folder into the current folder with a command that looks like this:
-`cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj`.
+```cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj```.
 If you type `ls` or `ll`, you should see 2 files: `init.traj` and `opt.py`. 
 <br>4) Use the ASE gui (`ase-gui init.traj`) to add the adsorbate to the catalyst. The adsorbate you add should, of course, correspond to the name of the folder you are working in
 <br>6) Submit `opt.py` to the supercomputer cluster with `sbatch --job-name=$(pwd) opt.py`.
