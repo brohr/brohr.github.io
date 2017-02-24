@@ -74,7 +74,10 @@ We have calculated the energy for:
 <br>4) The graphene lattice with only one metal atom in the unit cell
 
 The DFT calculations on the clean catalysts are done for you. To find the resulting energies:
-<br>1) Type `cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations`
+<br>1) Type
+```bash
+cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations
+```
 <br>2) As usual, type `ls` or `ll` to see what is in the folder
 <br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
 <br>4) Type `cat out.energy` to see the energy calculated by DFT
@@ -96,7 +99,10 @@ We have calculated the energy for:
 <br>3) The graphene lattice with the metal atoms in vacancies that are far apart
 
 The DFT calculations on the clean catalysts are done for you. To find the resulting energies..:
-<br>1) Type `cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations`
+<br>1) Type 
+```bash
+cd /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/calculations
+```
 <br>2) As usual, type `ls` or `ll` to see what is in the folder
 <br>3) Navigate through the folder to find your system. The folder names should be self-explanatory.
 <br>4) Type `cat out.energy` to see the energy calculated by DFT
