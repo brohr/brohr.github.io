@@ -125,6 +125,6 @@ $$\mathrm{E_{H,reference} - E_{H_2}/2}$$
 
 The adsorption energy is given by:
 
-$$\mathrm{E_{catalyst-with-adsorbate} - E_{clean_catalyst} - N_O*E_{O,reference} - N_H*E_{H,reference}$$
+$$\mathrm{E_{catalyst-with-adsorbate} - E_{clean_catalyst} - N_O*E_{O,reference} - N_H*E_{H,reference}}$$
 
 where $$\mathrm{N_O}$$ is the number of O atoms in the adsorbate, and $$\mathrm{N_O}$$ is the number of H atoms in the adsorbate.
