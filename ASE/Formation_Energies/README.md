@@ -7,7 +7,7 @@ permalink: /ASE/Formation_Energies/
 ## Contents ##
 
 1. [Lattice Constant Determination and Bulk Energy Calculation](#lattice-constant-determination)
-2. MOF Energy Calculation
+2. Metal Doped Graphene Energy Calculation
 <br>2a. [One Metal](#MOF1)
 <br>2b. [Two Metals](#MOF2)
 3. [Analysis](#analysis)

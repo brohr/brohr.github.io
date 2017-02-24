@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: false 
-permalink: /ASE/Formation_Energies/
+permalink: /ASE/Adsorption_Energies/
 ---
 
 ## Contents ##
