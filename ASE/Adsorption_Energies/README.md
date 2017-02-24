@@ -26,7 +26,7 @@ on Sherlock:
 
 ```bash
 cd $SCRATCH
-cp -r /scratch/users/brohr/TA_CHE444/Exercise_2_Adorption_Energies .
+cp -r /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies .
 ```
 
 This should create a folder called `Exercise_2_Adsoprtion_Energies/` containing subfolders with all the starter scripts you will need. 
