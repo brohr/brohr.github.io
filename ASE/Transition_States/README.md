@@ -4,14 +4,13 @@ mathjax: false
 permalink: /ASE/Transition_States/
 ---
 
-## Transition State Energies
-
 In this final exercise, you will be calculating the transition state energy for O-O coupling using the fixed bond length (FBL) method. The  nudged elastic band (NEB) method can more accurately determine the saddle point for the transition state, but it is more computationally intensive and we won't be using it for this course.
 
 
 ## Contents
 1. [Required Files](#RequiredFiles)
 2. [Fixed Bond Length Calculation](#fixed-bond-length-calculation)
+3. [Analysis](#analysis)
 <!-- 3. [Vibrational Frequencies and Free Energies](#vibrational-frequencies) -->
 <!-- 4. [Reaction Rate](#reaction-rate) -->
 <!-- 5. [Nudged Elastic Band Calculation (Optional)](#nudged-elastic-band-calculation) -->
@@ -42,6 +41,7 @@ cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/1-metal/close/O
 <br>3) Rename the file fblstart.traj with this command: `mv qn.traj fblstart.traj`.
 <br>4) A script called `fbl.py` will already be in the folder. Open the fbl.py script with `vim fbl.py`, scroll to the "your settings here" section, and make sure that the indices `atom1` and `atom2` correspond to the indices of the O atoms in fblstart.traj. You can determine the indices of the O atoms using the ASE GUI. After opening the gui (with `ase-gui fblstart.traj`), simply click each O atom. At the bottom of the ASE GUI window, it will say something like "#32 Oxygen (O)...". In this case, the indices of your O atoms wil likely be 32 and 33.
 <br>5) Submit the job with `sbatch --job-name=$(pwd) fbl.py`.
+<br>6) Repeat steps 1-5 for the far configuration.
 
 
 <a name='fixed-bond-length-calculation'></a>
@@ -88,6 +88,25 @@ You should only pay attention to the peak of the plot, which is where the transi
 If the bond length becomes unrealistically short, you will also see large spikes in the total energy towards the end of your calculation. You can safely ignore these images.
 
 Note that on very reactive surfaces, the FBL calculation may not be able to find the desorbed O<sub>2</sub>\* state before the bond length becomes unrealistically short (the adsorption of O<sub>2</sub>\* is extremely favorable). This is okay because we would expect the relevant transition state to occur AFTER the adsorption step for such a reactive surface. You can therefore use the transition state calculation as normal in this case even though FBL does not recover the gaseous O<sub>2</sub> state.
+
+
+<a name='analysis'></a>
+
+When the calculation is finished, an empty file named `done` will appear in the folder that the job ran in. Use the NEB tool (as pictured above) to find the peak of the energy path, disregarding any spike in energy that occurs at the end. Determine which point is the peak (the first point on the NEB plot is point #0, the second is point #1, etc). Then, view the contents of the `PES.dat` file with the command `cat PES.dat`. The energy of the transition state is the number in the second column of the line corresponding to your transition state. For example if the 14th point is your transition state, then the transition state energy is the number in the second column of the 14th line. You can check to make sure you're looking at the correct line by making sure that the energy in the line above and the energy in the line below are both lower (more negative) than the energy of the line that you think is the transition state. In other words, make sure you are actually selecting the local maximum energy. Let's call this energy $$\mathrm{E_{TS, raw}}$$.
+
+Now, the transition state energy relative to our gas phase references, $$\mathrm{E_{TS}}$$ is given by:
+
+$$\mathrm{E_{TS} = E_{TS, raw} - 2*E_{O,reference}} $$
+
+Use the same gas phase reference energy as in exercise 2.
+
+Finally, the activation is given by:
+
+$$\mathrm{E_{a} = E_{TS} - E_{initial}} $$
+
+where $$\mathrm{E_{initial}}$$ is the adsorption energy of the O_O system from exercise 2.
+
+Calculate the activation energy for the O-O coupling reaction for the close and the far configuration.
 
 
 <!--
