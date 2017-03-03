@@ -4,7 +4,7 @@ mathjax: false
 permalink: /ASE/Transition_States/
 ---
 
-## Exercise 3: Transition State Energies ##
+Exercise 3: Transition State Energies
 
 In this final exercise, you will be calculating the transition state energy for O-O coupling using the fixed bond length (FBL) method. The  nudged elastic band (NEB) method can more accurately determine the saddle point for the transition state, but it is more computationally intensive and we won't be using it for this course.
 
