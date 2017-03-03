@@ -55,8 +55,8 @@ The fixed bond length (FBL) method is a much faster but cruder way to approximat
 In a FBL calculation, you provide an initial state, then, you iteratively decrease the distance between the two atoms and optimize the geometry of the entire structure while keeping the bond length fixed. This will approximate the minimum energy pathway (MEP) between the initial and final states. Since we are iteratively decreasing the distance, our input in this case would correspond to the *initial* state in our O-O coupling reaction. We then fix the bond length between the two O\* atoms that are required to come together and form a bond. We are thus determining the minimum energy pathway for the reaction: 2O\* → O<sub>2</sub> + 2\*. Follow the `fbl.py` script to determine the transition state for the O-O coupling reaction on your metal. The script requires an initial state and a specification of the two atoms whose distance is to be fixed (the two O* atoms).
 
 ```python
-atom1=12
-atom2=13
+atom1=32
+atom2=33
 ```
 This specifies the atoms that will be forced to be pulled together. Then for each fixed O-O distance, a structural relaxation is performed.
 
