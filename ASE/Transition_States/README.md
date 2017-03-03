@@ -37,7 +37,7 @@ There are only two calculations that need to be submitted this week: one in the 
 <br>2) Copy the final state `qn.traj`file from your O_O calculation from exercise 2 into the Exercise 3 close folder with a command that looks like this:
 
 ```bash
-cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/1-metal/close/O_O/qn.traj .
+cp /scratch/users/brohr/Exercise_2_Adsorption_Energies/1-metal/close/O_O/qn.traj .
 ```
 
 <br>3) Rename the file fblstart.traj with this command: `mv qn.traj fblstart.traj`.
