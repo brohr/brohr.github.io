@@ -100,7 +100,7 @@ When the calculation is finished, an empty file named `done` will appear in the 
 
 Now, the transition state energy relative to our gas phase references, $$\mathrm{E_{TS}}$$, is given by:
 
-$$\mathrm{E_{TS} = E_{TS, raw} - 2*E_{O,reference}} - E_{clean-catalyst}$$
+$$\mathrm{E_{TS} = E_{TS, raw} - 2*E_{O,reference} - E_{clean-catalyst}}$$
 
 where $$\mathrm{E_{clean-catalyst}}$$ is the raw energy of the clean catalyst (meaning the catalyst with no adsorbates) calculated in exercise 1. Remember that this energy is different for the close configuration and the far configuration. Use the same gas phase reference energy as in exercise 2.
 
