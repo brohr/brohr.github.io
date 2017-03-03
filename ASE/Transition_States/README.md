@@ -4,14 +4,14 @@ mathjax: false
 permalink: /ASE/Transition_States/
 ---
 
-## Transition State Energies
+### Transition State Energies ###
 
 In this final exercise, you will be calculating the transition state energy for O-O coupling using the fixed bond length (FBL) method. The  nudged elastic band (NEB) method can more accurately determine the saddle point for the transition state, but it is more computationally intensive and we won't be using it for this course.
 
 
 ## Contents
 1. [Required Files](#RequiredFiles)
-2. [Fixed Bond Length Calculation](#fixed-bond-length-calculation)
+2. [Fixed Bond Length Calculation Information](#fixed-bond-length-calculation)
 3. [Analysis](#analysis)
 <!-- 3. [Vibrational Frequencies and Free Energies](#vibrational-frequencies) -->
 <!-- 4. [Reaction Rate](#reaction-rate) -->
@@ -93,6 +93,8 @@ Note that on very reactive surfaces, the FBL calculation may not be able to find
 
 
 <a name='analysis'></a>
+
+### Analysis ###
 
 When the calculation is finished, an empty file named `done` will appear in the folder that the job ran in. Use the NEB tool (as pictured above) to find the peak of the energy path, disregarding any spike in energy that occurs at the end. Determine which point is the peak (the first point on the NEB plot is point #0, the second is point #1, etc). Then, view the contents of the `PES.dat` file with the command `cat PES.dat`. The energy of the transition state is the number in the second column of the line corresponding to your transition state. For example if the 14th point is your transition state, then the transition state energy is the number in the second column of the 14th line. You can check to make sure you're looking at the correct line by making sure that the energy in the line above and the energy in the line below are both lower (more negative) than the energy of the line that you think is the transition state. In other words, make sure you are actually selecting the local maximum energy. Let's call this energy $$\mathrm{E_{TS, raw}}$$.
 
