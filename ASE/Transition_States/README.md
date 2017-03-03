@@ -98,7 +98,7 @@ Note that on very reactive surfaces, the FBL calculation may not be able to find
 
 When the calculation is finished, an empty file named `done` will appear in the folder that the job ran in. Use the NEB tool (as pictured above) to find the peak of the energy path, disregarding any spike in energy that occurs at the end. Determine which point is the peak (the first point on the NEB plot is point #0, the second is point #1, etc). Then, view the contents of the `PES.dat` file with the command `cat PES.dat`. The energy of the transition state is the number in the second column of the line corresponding to your transition state. For example if the 14th point is your transition state, then the transition state energy is the number in the second column of the 14th line. You can check to make sure you're looking at the correct line by making sure that the energy in the line above and the energy in the line below are both lower (more negative) than the energy of the line that you think is the transition state. In other words, make sure you are actually selecting the local maximum energy. Let's call this energy $$\mathrm{E_{TS, raw}}$$.
 
-Now, the transition state energy relative to our gas phase references, $$\mathrm{E_{TS}}$$ is given by:
+Now, the transition state energy relative to our gas phase references, $$\mathrm{E_{TS}}$$, is given by:
 
 $$\mathrm{E_{TS} = E_{TS, raw} - 2*E_{O,reference}} $$
 
