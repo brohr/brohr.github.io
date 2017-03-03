@@ -86,7 +86,7 @@ For each calculation:
 cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/opt.py .
 ```
 
-<br>3) Copy your clean (meaning empty, no adsorbate bonded) catalyst from the execise 1 folder into the current folder with a command that looks like this:
+<br>3) Copy your clean (meaning empty, no adsorbate bonded) catalyst from the exercise 1 folder into the current folder with a command that looks like this:
 ```bash
 cp /scratch/users/brohr/TA_CHE444/Exercise_1_Formation_Energies/Graphene/monomer/YOURMETAL/clean/qn.traj ./init.traj
 ```

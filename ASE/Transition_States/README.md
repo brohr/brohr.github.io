@@ -4,26 +4,19 @@ mathjax: false
 permalink: /ASE/Transition_States/
 ---
 
-# ASE Tutorials
-1. [Introduction to ASE](../)
-2. [Getting Started](../Getting_Started/)
-3. [Adsorption](../Adsorption/)
-4. [Transition States](../Transition_States/)
-5. [Error Estimation and Density of States](../BEEF_DOS/)
+## Transition State Energies
 
-____
-
-## Transition State and Free Energy Calculations
-
-In this final exercise, you will be calculating the transition state energy for N<sub>2</sub> dissociation using the fixed bond length (FBL) method. The  nudged elastic band (NEB) method can more accurately determine the saddle point for the transition state, but it is more computationally intensive and we won't be using it for this course. You will also be calculating the vibrational modes for the adsorbed species and using the modules within ASE to determine free energies. Finally, you will be putting everything together in order to calculate the reaction rate.
+In this final exercise, you will be calculating the transition state energy for O-O coupling using the fixed bond length (FBL) method. The  nudged elastic band (NEB) method can more accurately determine the saddle point for the transition state, but it is more computationally intensive and we won't be using it for this course.
 
 
 ## Contents
+1. [Required Files](#RequiredFiles)
 2. [Fixed Bond Length Calculation](#fixed-bond-length-calculation)
-3. [Vibrational Frequencies and Free Energies](#vibrational-frequencies)
-4. [Reaction Rate](#reaction-rate)
-5. [Nudged Elastic Band Calculation (Optional)](#nudged-elastic-band-calculation)
+<!-- 3. [Vibrational Frequencies and Free Energies](#vibrational-frequencies) -->
+<!-- 4. [Reaction Rate](#reaction-rate) -->
+<!-- 5. [Nudged Elastic Band Calculation (Optional)](#nudged-elastic-band-calculation) -->
 
+<a name='RequiredFiles'></a>
 
 ### Required Files ###
 
@@ -32,66 +25,39 @@ Obtain the required files by running:
 on Sherlock:
 
 ```bash
-cd $SCRATCH
-wget http://chemeng444.github.io/ASE/Transition_States/exercise_3_sherlock.tar
-tar -xvf exercise_3_sherlock.tar
+cp -r /scratch/users/brohr/TA_CHE444/Exercise_3_Transition_States .
 ```
 
-or on CEES:
+This will create a folder called `Exercise_3_Transition_States`. In that folder, there are two sub-folders: `close`, and `far`.
+
+There are only two calculations that need to be submitted this week: one in the `close` folder and one in the `far` folder. For the "close" geometry:
+
+<br>1) Go into the `close` folder.
+<br>2) Copy the final state `qn.traj`file from your O_O calculation from exercise 2 into the Exercise 3 close folder with a command that looks like this:
 
 ```bash
-cd ~/$USER
-wget http://chemeng444.github.io/ASE/Transition_States/exercise_3_cees.tar
-tar -xvf exercise_3_cees.tar
+cp /scratch/users/brohr/TA_CHE444/Exercise_2_Adsorption_Energies/1-metal/close/O_O/qn.traj .
 ```
 
+<br>3) Rename the file fblstart.traj with this command: `mv qn.traj fblstart.traj`.
+<br>4) A script called `fbl.py` will already be in the folder. Open the fbl.py script with `vim fbl.py`, scroll to the "your settings here" section, and make sure that the indices `atom1` and `atom2` correspond to the indices of the O atoms in fblstart.traj. You can determine the indices of the O atoms using the ASE GUI. After opening the gui (with `ase-gui fblstart.traj`), simply click each O atom. At the bottom of the ASE GUI window, it will say something like "#32 Oxygen (O)...". In this case, the indices of your O atoms wil likely be 32 and 33.
+<br>5) Submit the job with `sbatch --job-name=$(pwd) fbl.py`.
 
-This will create a folder called `Exercise_3_Transition_States`.
 
 <a name='fixed-bond-length-calculation'></a>
 
-### Fixed Bond Length Calculation ###
+### Fixed Bond Length Calculation Information ###
 
 The fixed bond length (FBL) method is a much faster but cruder way to approximate the minimum energy path and determine the transition state energy. It doesn’t require parallelization over different nodes but may not give you the exact transition state. Generally, one could perform a fixed bond length calculation first and determine if a transition state was found (by checking the vibrational modes). If the transition state is poorly described, then a NEB calculation can be performed based on the fixed bond length results as the inputs.
 
-In a FBL calculation, you provide an initial state, then, you iteratively decrease the distance between the two atoms and optimize the geometry of the entire structure while keeping the bond length fixed. This will approximate the minimum energy pathway (MEP) between the initial and final states. Since we are iteratively decreasing the distance, our input in this case would correspond to the *final* state in our N<sub>2</sub> dissociation reaction. We then fix the bond length between the two N\* atoms that are required to come together and form a bond. We are thus calculating the reverse reaction: 2N\* → N<sub>2</sub> + 2\*. Follow the [`fbl.py`](fbl.py) script to determine the transition state for the dissociative adsorption of N<sub>2</sub> on your metal. The script requires an initial state and a specification of the two atoms whose distance is to be fixed (the two N* atoms).
-
-When deciding which of your 2N\* states to include, you should consider all fully dissociated states within 0.5 eV of the lowest energy configuration, to ensure that you have found the lowest possible barrier. Note that we want to find the barrier for N<sub>2</sub> dissociation, so any configuration you found that is not dissociated (N<sub>2</sub>\* rather than 2N\*) should be ignored. 
+In a FBL calculation, you provide an initial state, then, you iteratively decrease the distance between the two atoms and optimize the geometry of the entire structure while keeping the bond length fixed. This will approximate the minimum energy pathway (MEP) between the initial and final states. Since we are iteratively decreasing the distance, our input in this case would correspond to the *initial* state in our O-O coupling reaction. We then fix the bond length between the two O\* atoms that are required to come together and form a bond. We are thus determining the minimum energy pathway for the reaction: 2O\* → O<sub>2</sub> + 2\*. Follow the `fbl.py` script to determine the transition state for the O-O coupling reaction on your metal. The script requires an initial state and a specification of the two atoms whose distance is to be fixed (the two O* atoms).
 
 ```python
 atom1=12
 atom2=13
 ```
+This specifies the atoms that will be forced to be pulled together. Then for each fixed O-O distance, a structural relaxation is performed.
 
-Make sure that the two atoms whose bond distance is to be fixed is correct. Since `FixBondLength()` is a constraint, all constraints on the unit cell must be re-specified when setting the constraints. For surfaces:
-
-```python
-constraints = [FixBondLength(atom1,atom2)]
-mask = [atom.z < 10 for atom in atoms]      # atoms in the structure to be fixed
-constraints.append(FixAtoms(mask=mask))
-atoms.set_constraint(constraints)
-```
-
-or for clusters:
-
-```python
-fixatoms = FixAtoms(indices=[atom.index for atom in atoms if atom.symbol in metals])
-constraints.append(fixatoms)
-```
-
-Then for each fixed N-N distance, a structural relaxation is performed.
-
-**_These settings have already been set for you in the `fbl.py` script. MAKE SURE TO READ THROUGH THE SCRIPT AND FOLLOW THE INSTRUCTIONS._**
-
-To reduce the likelihood of mistakes, we have highlighted the sections needing your input:
-
-```python
-#########################################################################################################
-#####                                     YOUR SETTINGS HERE                                        #####
-#########################################################################################################
-```
-
-Make sure to edit the settings in there!
 
 The fixed bond length calculation can continue beyond the final state and start to give you structures with unrealistically high energies. These would not be relevant for the reaction path and you should select only the trajectory images you want to view. To do this, you can combine the `.traj` files from each step first,
 
@@ -117,18 +83,14 @@ Even though the `NEB` menu option was intended for viewing NEB trajectories, it 
 <center><img src="Images/FBL-plot.png" alt="Reaction coordinate" style="width: 400px;"/><br>
 Reaction Coordinate</center>
 
-You should only pay attention to the peak of the plot, which is where the transition state is. The FBL calculation will not necessarily find the final state (in this case, gaseous N<sub>2</sub>), so the final state energy in the plot will not generally be correct.
-
-Keep in mind that this plot is a BACKWARDS description of the reaction path for N<sub>2</sub> dissociation. The first image is actually the last step (fully dissociated state).
+You should only pay attention to the peak of the plot, which is where the transition state is. The FBL calculation will not necessarily find the final state (in this case, gaseous O<sub>2</sub>), so the final state energy in the plot will not generally be correct.
 
 If the bond length becomes unrealistically short, you will also see large spikes in the total energy towards the end of your calculation. You can safely ignore these images.
 
-Note that on very reactive surfaces, the FBL calculation may not be able to find the desorbed N<sub>2</sub>\* state before the bond length becomes unrealistically short (the adsorption of N<sub>2</sub>\* is extremely favorable). This is okay because we would expect the relevant transition state to occur AFTER the adsorption step for such a reactive surface. You can therefore use the transition state calculation as normal in this case even though FBL does not recover the gaseous N<sub>2</sub> state.
+Note that on very reactive surfaces, the FBL calculation may not be able to find the desorbed O<sub>2</sub>\* state before the bond length becomes unrealistically short (the adsorption of O<sub>2</sub>\* is extremely favorable). This is okay because we would expect the relevant transition state to occur AFTER the adsorption step for such a reactive surface. You can therefore use the transition state calculation as normal in this case even though FBL does not recover the gaseous O<sub>2</sub> state.
 
 
-**<font color="red">Requirement:</font>** Turn in an image of the transition state and the reaction coordinate.
-
-
+<!--
 <a name='vibrational-frequencies'></a>
 
 ### Vibrational Frequencies and Free Energies ###
@@ -203,7 +165,7 @@ To perform a nudged elastic band (NEB) calculation, one needs to provide an init
 In the `neb.py` file make sure the line specifying the number of nodes.
 
 ```python
-#SBATCH --nodes=5
+#SBATCH [two hyphens]nodes=5
 ```
 corresponds to the number of _intermediate_ images. Check that `intermediate_images = 5` matches. 
 
@@ -223,3 +185,5 @@ ase-gui neb*.traj –n -1
 ```
 
 where all files of the form `neb*.traj` (with * referring to any number of characters) will be opened in ag. The `-n` flag specifies the image within each trajectory file. Since you are optimizing the entire reaction path, each step in the NEB will be stored in each image file. Specifying `-n -1` tells ase-gui to only read the last image of each file (i.e. the most current step).
+
+-->
