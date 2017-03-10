@@ -92,6 +92,8 @@ To consider O-O coupling, compare your calculated O-O coupling barrier to the po
 
 <a name='report'></a>
 
+## Report ##
+
 Your report should be between 3 to 5 pages long including figures and tables. Please be succinct and organize it in the following way:
 
 1) Introduction (brief): Why are OER and ORR important? What are the challenges? What might be interesting about the systems that we are studying?
