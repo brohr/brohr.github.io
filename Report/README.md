@@ -4,8 +4,6 @@ mathjax: true
 permalink: /Report/
 ---
 
-## Contents ##
-
 1. [Free Energy Corrections](#entropy)
 2. [Free Energy Diagram and Overpotential Analysis](#analysis)
 3. [Report](#report)
