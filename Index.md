@@ -18,7 +18,7 @@ Final Report (60% - <font color="red">Due 3/17 11:59 PM (Hard deadline)</font>)
 4. [Project Part 1 - Formation Energies](ASE/Formation_Energies/)
 5. [Project Part 2 - Adsorption Energies](ASE/Adsorption_Energies/)
 6. [Project Part 3 - Transition State Energies](ASE/Transition_States/)
-7. [Analysis and Report Guidelines](report_aayush)
+7. [Analysis and Report Guidelines](Report/)
 
 ### Basics ###
 
