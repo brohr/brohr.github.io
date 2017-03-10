@@ -20,7 +20,7 @@ The binding energies that you have calculated are electronic binding energies. T
 Free energy correction for O: +0.07 eV
 Free energy correction for H: +0.3 eV
 
-For every adsorbed species, add the above correction to the electronic energy. For example, OOH's binding energy should be increased by 2*0.07 + 0.3 eV. Assume that the O-O coupling transition-state is adsorbed and behaves just like O2. Its energy should therefore be increased by 2*0.07 eV.
+For every adsorbed species, add the above correction to the electronic energy. For example, OOH's binding energy should be increased by 2 * 0.07 + 0.3 eV. Assume that the O-O coupling transition-state is adsorbed and behaves just like O2. Its energy should therefore be increased by 2 * 0.07 eV.
 
 
 <a name='analysis'></a>
