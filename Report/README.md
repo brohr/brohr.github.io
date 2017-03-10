@@ -69,9 +69,9 @@ At each step in ORR, the reaction may only proceed in one of three ways. They ar
 On the monomer:
 <br>The monomer is quite easy to analyze because there is only one possibility at each step. The reaction must procede through the following pathway:
 <br>1) clean. (choose this to be 0 eV)
-<br>2) OOH* . (Note that the full reaction for the step 1->2 is really clean + O2(g) + proton + electron -> OOH* ). The energy for this state is given by the following equation: [Energy of the previous state, which was 0 eV] + [Free binding energy of OOH*] - [Free binding energy of the clean catalyst, which is 0 eV] - 4.92 eV (for the consumption of O2).
-<br>3) O* . (Note that the full reaction for the step 2->3 is really OOH* + proton + electron -> O* + H2O). The energy for this state is given by the following equation: [Energy of the previous state] + [Free binding energy of O*] - [Free binding energy of OOH*].
-<br>4) OH* . (Note that the full reaction for the step 3->4 is really O* + proton + electron -> OH* ). The energy for this state is given by the following equation: [Energy of the previous state] + [Free binding energy of OH*] - [Free binding energy of O* ].
+<br>2) OOH* . (Note that the full reaction for the step 1->2 is really clean + O2(g) + proton + electron -> OOH* ). The energy for this state is given by the following equation: [Energy of the previous state, which was 0 eV] + [Free binding energy of OOH* ] - [Free binding energy of the clean catalyst, which is 0 eV] - 4.92 eV (for the consumption of O2).
+<br>3) O* . (Note that the full reaction for the step 2->3 is really OOH* + proton + electron -> O* + H2O). The energy for this state is given by the following equation: [Energy of the previous state] + [Free binding energy of O* ] - [Free binding energy of OOH* ].
+<br>4) OH* . (Note that the full reaction for the step 3->4 is really O* + proton + electron -> OH* ). The energy for this state is given by the following equation: [Energy of the previous state] + [Free binding energy of OH* ] - [Free binding energy of O* ].
 <br>5) clean. (Note that the full reaction for the step 4->5 is really OH* + proton + electron -> H2O + clean). The energy for this state is given by the following equation: [Energy of the previous state] + [Free binding energy of the clean catalyst, which is 0 eV] - [Free binding energy of OH* ].
 
 On the dimer (both the close and the far configurations):
